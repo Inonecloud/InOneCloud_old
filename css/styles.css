@@ -196,7 +196,7 @@ footer #foot p{
 	}
     #cover{
 	//padding-top:200px;
-	background: url(img/cover_980.jpg) 100% 100% no-repeat;
+	background: url(/img/cover_980.jpg) 100% 100% no-repeat;
 	background-size: cover;
 	//max-width: 100%;
 	//max-height: 50%;
@@ -242,7 +242,7 @@ footer #foot p{
 	#cover{
 		position: relative;
 		//padding-top:200px;
-		background: url(img/cover.jpg) 100% 100% no-repeat;
+		background: url(/img/cover.jpg) 100% 100% no-repeat;
 		background-size: cover;
 		height: 370px; 
 		//height: 665px; 

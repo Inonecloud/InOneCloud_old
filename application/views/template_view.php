@@ -36,7 +36,7 @@
 			<div id="partners">
 				<ul>
 					<li><a href="https://drive.google.com">Google Drive</a></li>
-					<li><a href="https.disk.yandex.ru">Yandex Disk</a></li>				
+					<li><a href="https://disk.yandex.ru">Yandex Disk</a></li>				
 				</ul>
 			</div>
 		</div>

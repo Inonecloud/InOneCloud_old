@@ -1,0 +1,385 @@
+﻿/*InOneCloud new style version 1*/
+
+@import url("reset.css");
+
+footer, nav, header {
+		display: block;
+}
+
+a{
+	text-decoration: none;
+}
+
+html{
+	height:100%;
+}
+
+body{
+	margin: 0;
+	font-family: Segoe IU, sans-serif;
+	font-size: 1em;
+	max-width: 100%;
+	min-width: 980px;
+}
+
+nav{
+	background: #3f7cac;
+	height: 70px;
+}
+
+#logo{
+	font-size: 2.7em;
+	float: left;
+	color: #fff;
+	padding-left: 20px;
+	padding-top: 15px;
+}
+
+nav ul{
+	padding-top: 18px;
+	padding-left: 400px;
+}
+nav ul li{
+	float: left;
+	
+}
+
+nav ul li a{
+	display: block;
+	color: #fff;
+	font-size: 1.4em;
+	padding: 10px;
+}
+
+#cover{
+	position: relative;
+	//padding-top:200px;
+	background: url(/img/cover.jpg) 100% 100% no-repeat;
+	background-size: cover;
+	height: 665px; 
+	//height: 665px; 
+}
+
+#cover #auth{
+	top: 40%; /* Отступ в процентах от верхнего края окна */
+	left: 50%; /* Отступ в процентах от левого края окна */
+	width: 350px; /* Ширина блока */
+	height: 150px; /* Высота блока */
+	position: relative; /* Абсолютное позиционирование блока */
+	margin-top: -150px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
+	margin-left: -175px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
+}
+
+#cover h2{
+	padding-top: 2em;
+	text-align: center;
+	font-size: 2.3em;
+}
+
+#cover fieldset{
+	display: block;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	min-width: -webkit-min-content;
+	//margin: auto;
+	
+
+}
+#inputs{
+	padding: 15px 15px 0px 15px;
+    margin: 0 0 0px 0;
+    width: 353px; /* 353 + 2 + 45 = 400 */
+   
+}
+
+#username{
+    border:2px solid #efefef;
+    color: #000000;
+    padding: 3px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-size: 1.2em;
+    background: #FFF;
+	border-radius: 5px 5px 5px 5px;
+	width:300px;
+}
+#password{
+    border:2px solid #efefef;
+    color: #000000;
+    padding: 3px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-size: 1.2em;
+    background: #FFF;
+	border-radius: 5px 5px 5px 5px;
+	width:300px;
+}
+
+#actions
+{
+	padding: 0 5px 0 15px;
+  	margin: 8px 0 0 0;
+}
+#submit{
+	border: 0;
+    color: #fff;
+    padding: .6em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    width: 310px;
+    background: #3f7cac;
+    cursor: pointer;
+}
+
+article{
+	background: #f8f8f8;
+}
+
+footer{
+	margin-top: auto;
+	background: #3f7cac;
+	height:70px;
+}
+
+#foot{
+	padding-top: 20px;
+	padding-left: 20px;
+}
+
+footer #foot p{
+	float: left;
+	font-size: 1em;
+	color: #fff;
+}
+
+#foot  #footermenu{
+	font-size: 1em;
+}
+#foot #footermenu ul li{
+	float: left;
+	padding-left: .5em;
+	padding-right: .5em;
+	border-right: .1em solid #fff;
+}
+
+#foot #footermenu ul li a{
+	color: #fff;
+	font-size: 1em;
+
+}
+#foot #partners{
+	font-size: 1em;
+}
+#foot #partners ul li{
+	float: left;
+	padding-left: 15px;
+}
+
+#foot #partners ul li a{
+	color: #fff;
+	font-size: 1em;
+}
+
+@media screen and (max-width: 1280px) {
+    body{
+	margin: 0;
+	font-family: Segoe IU, sans-serif;
+	font-size: 1em;
+	min-width: 200px;
+	}
+    #cover{
+	//padding-top:200px;
+	background: url(img/cover_980.jpg) 100% 100% no-repeat;
+	background-size: cover;
+	//max-width: 100%;
+	//max-height: 50%;
+
+	height: 532px; 
+	//height: 100%;
+	//display: block;
+	//transition: all 0.3s ease;
+	}
+}
+
+@media screen and (max-width: 960px){
+	#cover{
+		height: 500p;
+	}
+
+}
+
+@media screen and (max-width: 480px){
+	  body{
+	
+	min-width: 20px;
+	}
+
+	nav{
+	background: #3f7cac;
+	height: 70px;
+	}
+
+	#logo{
+		font-size: 2em;
+		float: left;
+		color: #fff;
+		padding-left: 20px;
+		padding-top: 15px;
+	}
+
+	nav ul{
+		visibility:hidden;
+	}
+
+
+	#cover{
+		position: relative;
+		//padding-top:200px;
+		background: url(img/cover.jpg) 100% 100% no-repeat;
+		background-size: cover;
+		height: 370px; 
+		//height: 665px; 
+	}
+
+	#cover #auth{
+		top: 20%; /* Отступ в процентах от верхнего края окна */
+		left: 60%; /* Отступ в процентах от левого края окна */
+		width: 350px; /* Ширина блока */
+		height: 150px; /* Высота блока */
+		position: relative; /* Абсолютное позиционирование блока */
+		margin-top: -150px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
+		margin-left: -175px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
+	}
+
+	#cover h2{
+		padding-top: 2em;
+		text-align: center;
+		font-size: 1.5em;
+	}	
+
+	#cover fieldset{
+		display: block;
+		border-image-source: initial;
+		border-image-slice: initial;
+		border-image-width: initial;
+		border-image-outset: initial;
+		border-image-repeat: initial;
+		min-width: -webkit-min-content;
+		//margin: auto;
+	
+
+	}
+	#inputs{
+		padding: 10px 10px 0px 10px;
+    	margin: 0 0 10px 0;
+    	width: 343px; /* 353 + 2 + 45 = 400 */
+   	
+	}
+
+	#username{
+    	border:2px solid #efefef;
+    	color: #000000;
+    	padding: 2px;
+    	margin-top: 2px;
+    	margin-bottom: 4px;
+    	font-size: 1em;
+    	background: #FFF;
+		border-radius: 5px 5px 5px 5px;
+		width:250px;
+	}
+	#password{
+	    border:2px solid #efefef;
+	    color: #000000;
+	    padding: 2px;
+	    margin-top: 2px;
+	    margin-bottom: 4px;
+	    font-size: 1em;
+	    background: #FFF;
+		border-radius: 5px 5px 5px 5px;
+		width:250px;
+	}
+
+	#actions
+	{
+		padding: 0 5px 0 15px;
+	  	margin: 8px 0 0 0;
+	}
+	#submit{
+		border: 0;
+	    color: #fff;	
+    	padding: .4em;
+    	margin-left: auto;
+    	margin-right: auto;
+    	margin-top: 2px;
+    	margin-bottom: 2px;
+    	font-size: 1em;
+    	text-transform: uppercase;
+    	width: 256px;
+    	background: #3f7cac;
+    	cursor: pointer;
+	}
+
+	footer{
+		margin-top: auto;
+		background: #3f7cac;
+		height:150px;
+		width: 100%;
+	}
+	
+	#foot{
+		padding-top: 20px;
+		padding-left: 20px;
+	}
+	
+	footer #foot p{
+		float: left;
+		font-size: .8em;
+		color: #fff;
+	}
+
+	#foot  #footermenu{
+		font-size: 1.2em;
+		height:40px;
+		//position: absolute;
+	}
+
+	#foot #footermenu ul{
+		position: absolute;
+	}
+
+	#foot #footermenu ul li{
+		float: left;
+		padding-top:  10px;
+		padding-left: .0em;
+		padding-right: .5em;
+		border-right: .0em solid #fff;
+		width:100%;
+		
+	}
+		
+	#foot #footermenu ul li a{
+		color: #fff;
+		font-size: 1em;
+	
+	}
+	#foot #partners{
+		font-size: .5em;
+		visibility: hidden;
+	}
+	#foot #partners ul li{
+		float: left;
+		padding-left: 15px;
+	}
+
+	#foot #partners ul li a{
+		color: #fff;
+		font-size: 1em;
+	}
+}

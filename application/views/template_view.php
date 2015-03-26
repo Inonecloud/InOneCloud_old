@@ -12,9 +12,9 @@
 		<nav>
 			<h1 id="logo">InOneCloud</h1>
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Registration</a></li>				
+				<li><a href="/">Home</a></li>
+				<li><a href="about">About</a></li>
+				<li><a href="registration">Registration</a></li>				
 			</ul>
 		</nav>
 		<?php include 'application/views/'.$content_view; ?>
@@ -28,9 +28,9 @@
 			<p>Andrew Yelmanov (c) 2015</p>
 			<div id="footermenu">
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Registration</a></li>				
+					<li><a href="/">Home</a></li>
+					<li><a href="about">About</a></li>
+					<li><a href="registration">Registration</a></li>				
 				</ul>
 			</div>
 			<div id="partners">

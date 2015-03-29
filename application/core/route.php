@@ -1,5 +1,5 @@
 <?php
-class Route
+class Route    //маршрутизация по сайту
 {
 	static function start()
 	{

@@ -1,5 +1,5 @@
 <?php
-class Controller
+class Controller	//контроллер по умолчанию
 {
 	public $model;
 	public $view;

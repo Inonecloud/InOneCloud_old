@@ -12,7 +12,7 @@ class Controller_Login extends Controller
 	{
 		//$this->model = find_user();
 		$usersModel = $this->load_model('Users');
-		//$usersModel->find_user();
+		$usersModel->find_user();
 
 	}
 	function action_index()

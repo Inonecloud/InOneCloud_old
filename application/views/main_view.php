@@ -1,6 +1,6 @@
 <div id="cover">
 	<h2>Welcome to InOneCloud</h2>
-	<form id="auth" method="post" action="controller_login/run">
+	<form id="auth" method="post" action="/login/find_user">
 		<fieldset id="inputs">
 			<input id="username" name="username" type="text" placeholder="Username" autofocus required>
 			<input id="password" name="password" type="password" placeholder="Password" required>

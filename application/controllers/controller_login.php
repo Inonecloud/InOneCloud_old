@@ -4,8 +4,14 @@ class Controller_Login extends Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->model = new Model_Users();
+		//$this->model = new Model_Users();
 		$this->view = new View();
+	}
+
+	function action_find_user()
+	{
+		$this->model = find_user();
+
 	}
 	function action_index()
 	{

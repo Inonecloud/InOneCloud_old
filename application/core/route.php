@@ -22,17 +22,22 @@ class Route    //маршрутизация по сайту
 		}
 
 		//добавляем префиксы
-		$model_name = 'Model_' . $controller_name;
+	//	$model_name = 'Model_' . $controller_name;
 		$controller_name = 'Controller_' . $controller_name;
 		$action_name = 'action_' . $action_name;
+		
+		$controller = new $routes[1];
+		$controller -> load_model($routes[1]);
+		/*$controller_name = new $routes[0];
+		$controller->load_model($routes[0]);*/
 
 		//подключаем файл с классом модели
-		$model_file = strtolower($model_name). '.php';
+		/*$model_file = strtolower($model_name). '.php';
 		$model_path = "application/models/" . $model_file;
 		if(file_exists($model_path))
 		{
 			include "application/models/" . $model_file;
-		}
+		}*/
 
 		//подключаем файл с классом контоллера
 		$controller_file = strtolower($controller_name) . '.php';

@@ -6,7 +6,7 @@
 {
 	die("Error: ".$e->getMessage());
 }*/
-
+	exit('fuck');
 class Model_Users extends Model   //модель для работы с таблицей accounts
 {
 	public function __construct()

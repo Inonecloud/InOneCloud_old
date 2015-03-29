@@ -22,8 +22,8 @@ class Controller	//контроллер по умолчанию
 		{
 			require '/models/model_'.$name .'.php';		// подключаем его
 			$model_name = 'Model_'.$name;	
-			$this->model = new $model_name();	//создаем объект класса Model_имякласса
-			//return new $model_name();
+			//$this->model = new $model_name();	//создаем объект класса Model_имякласса
+			return new $model_name();
 		}
 	}
 }

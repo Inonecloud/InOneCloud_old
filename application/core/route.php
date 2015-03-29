@@ -26,10 +26,9 @@ class Route    //маршрутизация по сайту
 		$controller_name = 'Controller_' . $controller_name;
 		$action_name = 'action_' . $action_name;
 		
-		$controller = new $routes[1];
-		$controller -> load_model($routes[1]);
-		/*$controller_name = new $routes[0];
-		$controller->load_model($routes[0]);*/
+		/*$controller = new $routes[1];
+		$controller -> load_model($routes[1]);*/
+		
 
 		//подключаем файл с классом модели
 		/*$model_file = strtolower($model_name). '.php';

@@ -22,9 +22,12 @@ class Model_Users extends Model   //модель для работы с табл
 	function find_user()
 	{
 		echo "Hello <br/>";
-		$sth = $this->db->prepare("SELECT * FROM accounts");
+		$sth = $this->db->prepare("SELECT id FROM accounts WHERE username = :username  AND password = :password");
 		 //$sth = $dbh->prepare('SELECT * from fruct');
-   		$sth->execute();
+   		$sth->execute(array(
+							':username'=>$_POST['username'], 
+							':password' => $_POST['password'])
+   					);
 
     	$result = $sth->fetchAll();
 		print_r($result);

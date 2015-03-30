@@ -23,12 +23,17 @@ class Model_Users extends Model   //модель для работы с табл
 	{
 		echo "Hello <br/>";
 		$sth = $this->db->prepare("SELECT * FROM accounts");
+		 //$sth = $dbh->prepare('SELECT * from fruct');
+   		$sth->execute();
+
+    	$result = $sth->fetchAll();
+		print_r($result);
 		//$sth = $this->db->prepare("SELECT * FROM accounts WHERE username = :username  AND password = :password");
 		//$sth->execute(array(
 							//':username'=>$_POST['username'], 
 							//':password' => $_POST['password']
 						//));
-		$data = $sth->fetchAll();
-		print_r($data);
+		//$data = $sth->fetchAll();
+		//print_r($data);
 	}
 }

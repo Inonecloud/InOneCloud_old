@@ -12,7 +12,8 @@ class Model_Users extends Model   //модель для работы с табл
 	public function __construct()
 	{
 		parent::__construct();
-		echo md5('test');
+		//echo md5('test');
+		print_r($_POST);
 	}
 	function add_user()
 	{
@@ -20,11 +21,13 @@ class Model_Users extends Model   //модель для работы с табл
 	}
 	function find_user()
 	{
-		$sth = $this->db->prepare("SELECT * FROM accaunts WHERE usermame = :username  and password = :password");
-		$sth->execute(array(
-							':username'=>$_POST['username'], 
-							':password' => $_POST['password']
-						));
+		echo "Hello <br/>";
+		$sth = $this->db->prepare("SELECT * FROM accounts");
+		//$sth = $this->db->prepare("SELECT * FROM accounts WHERE username = :username  AND password = :password");
+		//$sth->execute(array(
+							//':username'=>$_POST['username'], 
+							//':password' => $_POST['password']
+						//));
 		$data = $sth->fetchAll();
 		print_r($data);
 	}

@@ -5,7 +5,7 @@ class Controller_Login extends Controller
 	{
 		parent::__construct();
 		//$this->model = new Model_Users();
-		$this->view = new View();
+		//$this->view = new View();
 	}
 
 	function action_find_user()
@@ -17,6 +17,7 @@ class Controller_Login extends Controller
 	}
 	function action_index()
 	{
+		$this->view->generate('main_view.php', 'template_view.php');
 		/*if(isset($_POST['LogIn']))
 		{
 			if(isset($_POST['login']) && (isset($_POST['password'])) )

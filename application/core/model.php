@@ -6,8 +6,6 @@ class Model   //модель по умолчанию
 		$this->db = new DBconnect();
 	}
 
-	
-
 	public function get_data()
 	{
 		

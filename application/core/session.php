@@ -1,7 +1,7 @@
 <?php
 class Session    //cессии
 {
-	public static function inti()	//инициализация сессии
+	public static function init()	//инициализация сессии
 	{
 		session_start();
 	}
@@ -13,6 +13,7 @@ class Session    //cессии
 
 	public static function get($key)
 	{
+		if (isset($_SESSION[$key]))
 		return $_SESSION[$key];
 	}	
 

@@ -34,7 +34,11 @@
 				<ul>
 					<li><a href="/">Home</a></li>
 					<li><a href="about">About</a></li>
-					<li><a href="registration">Registration</a></li>				
+					<?php if(Session::get('loggedIn') == true):?>
+					<li><a href="dashboard/logout">Log out</a></li>
+					<?php else: ?>	
+					<li><a href="registration">Registration</a></li>
+					<?php endif; ?>					
 				</ul>
 			</div>
 			<div id="partners">

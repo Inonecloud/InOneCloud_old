@@ -1,12 +1,4 @@
 <?php
-//require_once 'application/core/dbconnect.php';
-/*try{
-	$pdo = new PDO('mysql:host=127.0.0.1; dbname=inonecloud', 'root','');
-}catch (PDOExeption $e)
-{
-	die("Error: ".$e->getMessage());
-}*/
-	//exit('fuck');
 class Model_Users extends Model   //модель для работы с таблицей accounts
 {
 	public function __construct()
@@ -19,24 +11,30 @@ class Model_Users extends Model   //модель для работы с табл
 	{
 		
 	}
-	function find_user()
+	function find_user() //функция авторизации пользователя
 	{
 		echo "Hello <br/>";
 		$sth = $this->db->prepare("SELECT id FROM accounts WHERE username = :username  AND password = :password");
-		 //$sth = $dbh->prepare('SELECT * from fruct');
    		$sth->execute(array(
 							':username'=>$_POST['username'], 
 							':password' => $_POST['password'])
    					);
 
-    	$result = $sth->fetchAll();
-		print_r($result);
-		//$sth = $this->db->prepare("SELECT * FROM accounts WHERE username = :username  AND password = :password");
-		//$sth->execute(array(
-							//':username'=>$_POST['username'], 
-							//':password' => $_POST['password']
-						//));
-		//$data = $sth->fetchAll();
-		//print_r($data);
+    	/*$result = $sth->fetchAll();
+		print_r($result);*/
+
+		$count = $sth->rowCount();
+		if($count > 0)
+		{
+			//logged in
+			Session::init();
+			Session::set('loggedIn', true);
+			header('location: ../dashboard');
+		}
+		else
+		{
+			header('location: ../login');
+		}
+		
 	}
 }

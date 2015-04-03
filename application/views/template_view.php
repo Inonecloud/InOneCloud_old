@@ -12,11 +12,12 @@
 		<nav>
 			<h1 id="logo">InOneCloud</h1>
 			<ul>
+				<?php if(Session::get('loggedIn') == true):?>
+				<li><a href="dashboard">Home</a></li>
+				<li><a href="dashboard/logout">Log out</a></li>
+				<?php else: ?>
 				<li><a href="/">Home</a></li>
 				<li><a href="about">About</a></li>
-				<?php if(Session::get('loggedIn') == true):?>
-				<li><a href="dashboard/logout">Log out</a></li>
-				<?php else: ?>	
 				<li><a href="registration">Registration</a></li>
 				<?php endif; ?>			
 			</ul>

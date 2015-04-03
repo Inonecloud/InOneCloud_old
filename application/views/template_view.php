@@ -29,7 +29,7 @@
 	</article>
 	<footer>
 		<div id="foot">
-			<p>Andrew Yelmanov (c) 2015</p>
+			<p>Andrew Yelmanov &copy 2015</p>
 			<div id="footermenu">
 				<ul>
 					<li><a href="/">Home</a></li>

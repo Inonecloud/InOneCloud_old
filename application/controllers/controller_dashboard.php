@@ -6,13 +6,13 @@ class Controller_Dashboard extends Controller
 		parent::__construct();
 		Session::init();
 		$logged = Session::get('loggedIn');
+		$username = Session::get('username');
 		if($logged == false)
 		{
 			Session::destroy();
 			header('location: ../login');
 			exit;
-		}
-		
+		}		
 	}
 
 	function action_index()

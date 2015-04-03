@@ -65,8 +65,8 @@ nav ul li a{
 	left: 50%; /* Отступ в процентах от левого края окна */
 	width: 350px; /* Ширина блока */
 	height: 150px; /* Высота блока */
-	position: relative; /* Абсолютное позиционирование блока */
-	margin-top: -150px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
+	position: absolute; /* Абсолютное позиционирование блока */
+	margin-top: -40px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
 	margin-left: -175px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
 }
 
@@ -236,6 +236,8 @@ footer #foot p{
 
 	nav ul{
 		visibility:hidden;
+		 padding-top: 0px; 
+  		 padding-left: 0px;
 	}
 
 
@@ -251,7 +253,7 @@ footer #foot p{
 	#cover #auth{
 		top: 20%; /* Отступ в процентах от верхнего края окна */
 		left: 60%; /* Отступ в процентах от левого края окна */
-		width: 350px; /* Ширина блока */
+		width: 260px; /* Ширина блока */
 		height: 150px; /* Высота блока */
 		position: relative; /* Абсолютное позиционирование блока */
 		margin-top: -150px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
@@ -259,9 +261,9 @@ footer #foot p{
 	}
 
 	#cover h2{
-		padding-top: 2em;
+		padding-top: 1em;
 		text-align: center;
-		font-size: 1.5em;
+		font-size: 1.7em;
 	}	
 
 	#cover fieldset{
@@ -279,7 +281,7 @@ footer #foot p{
 	#inputs{
 		padding: 10px 10px 0px 10px;
     	margin: 0 0 10px 0;
-    	width: 343px; /* 353 + 2 + 45 = 400 */
+    	width: 260px; /* 353 + 2 + 45 = 400 */
    	
 	}
 
@@ -309,7 +311,8 @@ footer #foot p{
 	#actions
 	{
 		padding: 0 5px 0 15px;
-	  	margin: 8px 0 0 0;
+	  	margin: 0px 0 0 0;
+	  	width: 200px; 
 	}
 	#submit{
 		border: 0;

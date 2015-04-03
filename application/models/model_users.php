@@ -14,7 +14,7 @@ class Model_Users extends Model   //модель для работы с табл
 	function find_user() //функция авторизации пользователя
 	{
 		echo "Hello <br/>";
-		$sth = $this->db->prepare("SELECT id FROM accounts WHERE username = :username  AND password = :password");
+		$sth = $this->db->prepare("SELECT id, username FROM accounts WHERE username = :username  AND password = :password");
    		$sth->execute(array(
 							':username'=>$_POST['username'], 
 							':password' => $_POST['password'])
@@ -22,12 +22,15 @@ class Model_Users extends Model   //модель для работы с табл
 
     	/*$result = $sth->fetchAll();
 		print_r($result);*/
+		$data = $sth->fetch();
+		print_r($data);
 
 		$count = $sth->rowCount();
 		if($count > 0)
 		{
 			//logged in
 			Session::init();
+			Session::set('username', $data['username'] );
 			Session::set('loggedIn', true);
 			header('location: ../dashboard');
 		}

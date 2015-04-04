@@ -20,6 +20,14 @@ class Controller_Dashboard extends Controller
 		$this->view->generate('dashboard_view.php', 'template_view.php');
 	}
 
+	function action_yandex_connect()
+	{
+		$client_id = "d0387d6c503246909145797d469d7248";
+		$client_secret = "576b5cf52f1b4f1bab1eb7eeca1db60f";
+		YDconnect::init($client_id,$client_secret); 
+
+	}
+
 	function action_logout()
 	{
 		Session::destroy();

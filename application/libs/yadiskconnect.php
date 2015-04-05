@@ -20,39 +20,14 @@ class YDconnect
    			Header("Location: https://oauth.yandex.ru/authorize?response_type=code&client_id=".$client_id);
     		die();
     	}
-    }
+  	
 
 		// Если пользователь нажимает "Разрешить" на странице подтверждения, он приходит обратно к нам
 		// $_Get["code"] будет содержать код для получения токена. Код действителен в течении часа.
-		// Теперь у нас есть разрешение и его код, можем отправлять запрос на токен.
-    public static function get_code()
-    {
-		$result=postKeys("https://oauth.yandex.ru/token",
-				   			array(
-				        			'grant_type'=> 'authorization_code', // тип авторизации
-				        			'code'=> $_GET["code"], // наш полученный код
-				        			'client_id'=>$client_id,
-				        			'client_secret'=>$client_secret
-				        			),
-				    		array('Content-type: application/x-www-form-urlencoded')
-				    	);
+		// Теперь у нас есть разрешение и его код, можем отправлять запрос на токен
+		
 
-		if ($result["code"]==200) 
-		{
-	    	$result["response"]=json_decode($result["response"],true);
-	    	$token=$result["response"]["access_token"];
-	    	echo "Your token" .$token ."<br/>";
-	    }
-	    else
-	    {
-	   		echo "Какая-то фигня! Код: ".$result["code"];
-	    }
-
-	// Токен можно кинуть в базу, связав с пользователем, например, а за пару дней до конца токена напомнить, чтобы обновил
-	    return $token;
-	}
-
-	public static function postKeys($url,$peremen,$headers) 
+	 function postKeys($url,$peremen,$headers) 
 	{
     	$post_arr=array();
     	foreach ($peremen as $key=>$value) 
@@ -73,4 +48,31 @@ class YDconnect
 	    $code=curl_getinfo($handle, CURLINFO_HTTP_CODE);
 	    return array("code"=>$code,"response"=>$response);
     }
+
+    $result = postKeys("https://oauth.yandex.ru/token",
+				   			array(
+				        			'grant_type'=> 'authorization_code', // тип авторизации
+				        			'code'=> $_GET["code"], // наш полученный код
+				        			'client_id'=>$client_id,
+				        			'client_secret'=>$client_secret
+				        			),
+				    		array('Content-type: application/x-www-form-urlencoded')
+				    	);
+
+		if ($result["code"]==200) 
+		{
+	    	$result["response"]=json_decode($result["response"],true);
+	    	$token=$result["response"]["access_token"];
+	    	//echo "Your token" .$token ."<br/>";
+	    	return $token;
+	    }
+	    else
+	    {
+	   		//echo "Какая-то фигня! Код: ".$result["code"];
+	   		return $result["code"];
+	    }
+
+	// Токен можно кинуть в базу, связав с пользователем, например, а за пару дней до конца токена напомнить, чтобы обновил
+	   
+	}
 }

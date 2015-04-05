@@ -10,7 +10,7 @@
 		<fieldset>
 			<input id="submit" type="submit" name="registrate" value="Registration">
 		</fieldset>
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 		console.log("Hello");
 		var pass = document.getElementByID(password).value;
 		var cPass = document.getElementByID(confpassword).value;
@@ -26,5 +26,5 @@
 				return true;
 				//alert("Пароли должны совпадать");
 		}
-		</script>
+		</script>-->
 </div>

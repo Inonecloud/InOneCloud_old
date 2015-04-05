@@ -6,15 +6,24 @@ class Route    //маршрутизация по сайту
 		//контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
+		//$routes = explode('/', substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], "?")));
+		if(strpos($_SERVER['REQUEST_URI'], "?") == true)
+			$routes = explode('/', substr($_SERVER['REQUEST_URI'], 0 , strpos($_SERVER['REQUEST_URI'], "?")));
+		else
+			$routes = explode('/',$_SERVER['REQUEST_URI']);
 
-		$routes = explode('/', $_SERVER['REQUEST_URI']);
+		//print_r($routes);
+		//die();
 
 		//получаем имя контроллера
 		if(!empty($routes[1]))
 		{
+			//$routes[1] = substr($routes[1], 0, strpos($routes[1], "?"));
 			$controller_name = $routes[1];
 		}
 		
+		//print_r($controller_name);
+			//die();
 		//получаем имя экшена
 		if(!empty($routes[2]))
 		{

@@ -7,10 +7,36 @@ class Model_Users extends Model   //модель для работы с табл
 		//echo md5('test');
 		print_r($_POST);
 	}
+
 	function add_user()
 	{
-		
+		$username = $_POST['username'];
+		$password = Hash::create('sha256', $_POST['password'], 'cats do not fliing');
+		$email = $_POST['email'];
+
+		echo $username, $password, $email;
+
+		$sth = $this->db->prepare("INSERT INTO accounts (username, password, email) VALUES (:username, :password, :email)");
+		$sth->execute(array(
+							':username'=>$username,
+							':password'=>$password,
+							':email'=>$email
+							));
+		$data = $sth->fetch();
+		print_r($data);
+		header('location: ../');
 	}
+
+	function check_user($username)
+	{
+		$sth = $this->db->prepare("SELECT username FROM accounts WHERE username = :username");
+		$sth->db->execute(array(
+								':username' => $userneme
+								));
+
+		return false;
+	}
+
 	function find_user() //функция авторизации пользователя
 	{	
 		/*echo Hash::create('sha256', $_POST['password'], 'cats do not fliing');

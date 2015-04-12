@@ -15,6 +15,7 @@ html{
 }
 
 body{
+	background: #f8f8f8;
 	margin: 0;
 	font-family: Segoe IU, sans-serif;
 	font-size: 1em;
@@ -95,7 +96,7 @@ nav ul li a{
    
 }
 
-#username{
+.username{
     border:2px solid #efefef;
     color: #000000;
     padding: 3px;
@@ -106,7 +107,7 @@ nav ul li a{
 	border-radius: 5px 5px 5px 5px;
 	width:300px;
 }
-#password{
+.password{
     border:2px solid #efefef;
     color: #000000;
     padding: 3px;
@@ -123,7 +124,7 @@ nav ul li a{
 	padding: 0 5px 0 15px;
   	margin: 8px 0 0 0;
 }
-#submit{
+.submit{
 	border: 0;
     color: #fff;
     padding: .6em;
@@ -186,6 +187,82 @@ footer #foot p{
 	color: #fff;
 	font-size: 1em;
 }
+
+/*-----REGISTRATION---------*/
+#registration{
+	margin-left: 30%;
+	width: 35%;
+}
+
+#registration h2{
+	font-size: 1.5em;
+	font-style: normal;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+#auth{
+	position: absolute;
+
+}
+
+fieldset label {
+	font-weight: bold;
+	//float:left;
+}
+
+.username{
+	border:2px solid #efefef;
+    color: #000000;
+    padding: 3px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-size: 1.2em;
+    background: #FFF;
+	border-radius: 5px 5px 5px 5px;
+	width:300px;
+}
+
+.password{
+	border:2px solid #efefef;
+    color: #000000;
+    padding: 3px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-size: 1.2em;
+    background: #FFF;
+	border-radius: 5px 5px 5px 5px;
+	width:300px;
+}
+
+.email{
+    border:2px solid #efefef;
+    color: #000000;
+    padding: 3px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-size: 1.2em;
+    background: #FFF;
+	border-radius: 5px 5px 5px 5px;
+	width:300px;
+}
+
+.confpassword{
+    border:2px solid #efefef;
+    color: #000000;
+    padding: 3px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-size: 1.2em;
+    background: #FFF;
+	border-radius: 5px 5px 5px 5px;
+	width:300px;
+}
+
+
+
+/*--------------------------*/
 
 @media screen and (max-width: 1280px) {
     body{
@@ -285,7 +362,7 @@ footer #foot p{
    	
 	}
 
-	#username{
+	.username{
     	border:2px solid #efefef;
     	color: #000000;
     	padding: 2px;
@@ -296,7 +373,7 @@ footer #foot p{
 		border-radius: 5px 5px 5px 5px;
 		width:250px;
 	}
-	#password{
+	.password{
 	    border:2px solid #efefef;
 	    color: #000000;
 	    padding: 2px;
@@ -314,7 +391,7 @@ footer #foot p{
 	  	margin: 0px 0 0 0;
 	  	width: 200px; 
 	}
-	#submit{
+	.submit{
 		border: 0;
 	    color: #fff;	
     	padding: .4em;

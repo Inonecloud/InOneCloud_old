@@ -8,6 +8,7 @@ require_once 'core/route.php';
 require_once 'core/dbconnect.php';
 require_once 'core/session.php';
 require_once 'core/hash.php';
+//require_once 'phar://yandex-php-library_master.phar/vendor/autoload.php';
 require_once 'libs/yadiskconnect.php';
 require_once 'libs/yandexlib.php';
 //конфигурации

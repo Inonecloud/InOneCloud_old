@@ -19,6 +19,14 @@ class Controller_Dashboard extends Controller
 	{
 		$this->view->generate('dashboard_view.php', 'template_view.php');
 		//echo YDconnect::get_code();
+		$yatoken = Session::get('yatoken');
+		if($yatoken != null)
+		{
+			$yd = new YandexLib;
+			$diskClient = $yd -> __construct();
+			echo $yd -> show_name($diskClient);
+			$yd ->show_dir($diskClient);
+		}
 	}
 
 	function action_yandex_connect()

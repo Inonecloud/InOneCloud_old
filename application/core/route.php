@@ -11,7 +11,7 @@ class Route    //маршрутизация по сайту
 			$routes = explode('/', substr($_SERVER['REQUEST_URI'], 0 , strpos($_SERVER['REQUEST_URI'], "?")));
 		else
 			$routes = explode('/',$_SERVER['REQUEST_URI']);
-
+		
 		//print_r($routes);
 		//die();
 

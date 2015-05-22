@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAKC,6BAA8B;EAC7B,SAAS,EAAE,IAAI;;;AAMf,kBAAU;EACT,SAAS,EAAE,GAAG;;;AAMhB,OAAQ;EACP,qBAAqB,EAAE,MAAM;EAE7B,UAAG;IACF,SAAS,EAAE,KAAK",
+"sources": ["../scss/style-normal.scss"],
+"names": [],
+"file": "styles-normal.css"
+}

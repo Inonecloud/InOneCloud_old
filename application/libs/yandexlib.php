@@ -23,12 +23,12 @@ class YandexLib
 
 		foreach ($dirContent as $dirItem) {
 		    if ($dirItem['resourceType'] === 'dir') {
-		        echo 'Директория "' . $dirItem['displayName'] . '" была создана ' . date(
+		        echo 'Directory "' . $dirItem['displayName'] . date(
 		                'Y-m-d в H:i:s',
 		                strtotime($dirItem['creationDate'])
 		            ) . '<br />';
 		    } else {
-		        echo 'Файл "' . $dirItem['displayName'] . '" с размером в ' . $dirItem['contentLength'] . ' байт был создан ' . date(
+		        echo 'File "' . $dirItem['displayName'] . '" Size ' . $dirItem['contentLength'] . ' bites ' . date(
 		                'Y-m-d в H:i:s',
 		                strtotime($dirItem['creationDate'])
 		            ) . '<br />';

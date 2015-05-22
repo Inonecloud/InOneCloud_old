@@ -10,7 +10,7 @@ class Controller_Dashboard extends Controller
 		if($logged == false)
 		{
 			Session::destroy();
-			header('location: ../login');
+			header('location: ../');
 			exit;
 		}		
 	}
@@ -44,7 +44,7 @@ class Controller_Dashboard extends Controller
 	function action_logout()
 	{
 		Session::destroy();
-		header('location: ../');
+		header('location: ..');
 		exit;
 	}
 }

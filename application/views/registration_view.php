@@ -1,3 +1,42 @@
+<!-- Main-->
+<article id="main" class="container">
+	<header>
+				<h2>Create your InOneCloud Account</h2>
+				<p>You can registrate here</p>
+			</header>
+			<div class="box">
+				<form method="post" action="/registration/add_user">
+					<div class="row uniform 50%">
+						<div class="6u 12u(mobilep)">
+							<input type="text" name="name" id="name" value="" placeholder="Username" />
+						</div>
+						<div class="6u 12u(mobilep)">
+							<input type="email" name="email" id="email" value="" placeholder="Email" />
+						</div>
+					</div>
+					<div class="row uniform 50%">
+						<div class="12u">
+							<input type="password" name="email" id="email" value="" placeholder="Password" />
+						</div>
+					</div>
+					<div class="row uniform 50%">
+						<div class="12u">
+							<input type="password" name="email" id="email" value="" placeholder="Confirm password" />
+						</div>
+					</div>
+					<div class="row uniform">
+						<div class="12u">
+							<ul class="actions align-center">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+</article>
+<!--End Main-->
+
+<!--
 <div id="registration">
 	<h2>Create your InOneCloud Account</h2>
 	<form id="reg" method="post" action="/registration/add_user">
@@ -9,7 +48,7 @@
 		</fieldset>
 		<fieldset>
 			<input class="submit" type="submit" name="registrate" value="Registration">
-		</fieldset>
+		</fieldset>-->
 		<!--<script type="text/javascript">
 		console.log("Hello");
 		var pass = document.getElementByID(password).value;

@@ -1,7 +1,10 @@
 <?php if(Session::get('loggedIn') == true):?>	
 <?php $username = Session::get('username');?>
 <?php $yatocken = Session::get('yatoken');?>
+<?php $dirContent = Session::get('dirContent');?>
+<?php $diskSpace = Session::get('diskSpace');?>
 <?php endif; ?>		
+
 <article id="main" class="container">
 		<header class="aboutcloud">
 			<h2>Welcome <?php echo ucfirst($username); ?> </h2>
@@ -10,14 +13,20 @@
 			<p>Here you can connect to Yandex Disk, Google Drive</p>
 			<a href="dashboard/yandex_connect">Connect to Yandex Disk</a>	
 		<?php else: ?>
-			<?php echo $yatocken; ?>
+			<?=$yatocken?>
 		<?php endif; ?>			
 		</header>
 
-		<!--Upload-->
-		<input type="file" multiple>
+		<?php if($yatocken != null): ?>
 
-		<form action="?">
+		<!--Upload-->
+		<h3>Yandex Disk</h3>
+		<p>Free Space: <?=round(($diskSpace['availableBytes'] - $diskSpace['usedBytes']) / 1024 / 1024 / 1024, 2)?> Gbytes</p>
+		<p>All Space: <?=round($diskSpace['availableBytes'] / 1024 / 1024 / 1024, 2)?> Gbytes</p>
+		<form method='post' action='dashboard/yandex_upload' enctype='multipart/form-data'>
+			<input type='submit' value='Upload'>
+		<form action="#">
+			<input type="file" multiple>
      		<div id="dropZone">
         		Drag your file here for uploading
       		</div>
@@ -26,48 +35,39 @@
 
 		<!-- Table -->
 		<section class="box">
-			<h3>Yandex Disk</h3>
 			<div class="table-wrapper">
 				<table>
 					<thead>
 						<tr>
+							<th></th>
 							<th>Name</th>
 							<th>Description</th>
 							<th>Date</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Something.jpg</td>
-							<td>Ante turpis integer aliquet porttitor.</td>
-							<td>29.04.2015</td>
-						</tr>
-						<tr>
-							<td>Nothing.docx</td>
-							<td>Vis ac commodo adipiscing arcu aliquet.</td>
-							<td>19.05.2015</td>
-						</tr>
-						<tr>
-							<td>Something</td>
-							<td> Morbi faucibus arcu accumsan lorem.</td>
-							<td>29.09.2024</td>
-						</tr>
-						<tr>
-							<td>Nothing</td>
-							<td>Vitae integer tempus condimentum.</td>
-							<td>19.02.2015</td>
-						</tr>
-						<tr>
-							<td>Something</td>
-							<td>Ante turpis integer aliquet porttitor.</td>
-							<td>01.01.2015</td>
-						</tr>
+						<?php 
+						foreach ($dirContent as $dirItem) 
+		    				if ($dirItem['resourceType'] === 'dir') 
+		       					 echo '<tr>
+		       							<td><input type="checkbox"></td>
+		       							<td>'. $dirItem['displayName'] .'</td>
+		       							<td>Directory </td>
+		       							<td>'. date('d-m-Y H:i:s', strtotime($dirItem['creationDate'])) . '</td>
+		       							</tr>';
+		     				else 
+		       					 echo '<tr>
+		       							<td><input type="checkbox"></td>
+		       							<td>' . $dirItem['displayName'] . '</td>
+		       							<td> Size ' . intval($dirItem['contentLength']/1024) . ' KBytes</td>
+		       							<td> '.$dirItem['public_url'] . date('d-m-Y H:i:s', strtotime($dirItem['creationDate'])) .'</td>
+		       							</tr>';    
+		       			?>
 					</tbody>
 				</table>
-			</div>
-
-						
+			</div>						
 		</section>
+		<?php endif; ?>		
 		</div>
 		</div>
 				

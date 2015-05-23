@@ -24,9 +24,24 @@ class Controller_Dashboard extends Controller
 		{
 			$yd = new YandexLib;
 			$diskClient = $yd -> __construct();
-			echo $yd -> show_name($diskClient);
-			$yd ->show_dir($diskClient);
+			//$ses = $yd ->show_name($diskClient);
+			Session::set('dirContent',$yd ->show_name($diskClient));
+			//echo $yd -> show_name($diskClient);
+			Session::set('dirContent', $yd ->show_dir($diskClient));
+			Session::set('diskSpace', $yd ->disk_space($diskClient));
+			//exit;
+			//Session::set('dirContent', $yd ->show_dir($diskClient));
 		}
+	}
+
+	function action_yandex_upload()
+	{
+		$yatoken = Session::get('yatoken');
+		$yd = new YandexLib;
+		$diskClient = $yd -> __construct();
+		$fileName = $_FILES['filename']['name'];
+		$yd -> upload_file($diskClient, $fileName);
+
 	}
 
 	function action_yandex_connect()

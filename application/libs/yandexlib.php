@@ -17,23 +17,32 @@ class YandexLib
 		return $login = $diskClient->getLogin();
 	}
 
+	function disk_space($diskClient)
+	{
+		//Получаем свободное и занятое место
+		return $diskSpace = $diskClient->diskSpaceInfo();
+	}
+
 	function show_dir($diskClient)
 	{
-		$dirContent = $diskClient->directoryContents('/');
+		return $dirContent = $diskClient->directoryContents('/');
+		
+		//print_r($files);
+		
 
-		foreach ($dirContent as $dirItem) {
-		    if ($dirItem['resourceType'] === 'dir') {
-		        echo 'Directory "' . $dirItem['displayName'] . date(
+
+		/*foreach ($dirContent as $dirItem) 
+		    if ($dirItem['resourceType'] === 'dir') 
+		        echo 'Directory "'. $dirItem['displayName'] . date(
 		                'Y-m-d в H:i:s',
 		                strtotime($dirItem['creationDate'])
-		            ) . '<br />';
-		    } else {
-		        echo 'File "' . $dirItem['displayName'] . '" Size ' . $dirItem['contentLength'] . ' bites ' . date(
+		            ) . '<br/>';
+		     else 
+		        echo 'File "' . $dirItem['displayName'] . '" Size ' . $dirItem['contentLength'] . ' bytes '.$dirItem['public_url'] . date(
 		                'Y-m-d в H:i:s',
 		                strtotime($dirItem['creationDate'])
-		            ) . '<br />';
-		    }
-		}
+		            ) . '<br />';   */
+		
 	}
 
 	function create_dir($diskClient, $path)
@@ -47,11 +56,11 @@ class YandexLib
 
 	function upload_file($diskClient, $fileName)
 	{
-		$fileName = 'My_video_1.avi';
-		$newName = 'My_cool_video_1.avi';
+		//$fileName = 'My_video_1.avi';
+		$newName = $filename;
 
 		$diskClient->uploadFile(
-		    '/Новая папка/',
+		    '/',
 		    array(
 		        'path' => $fileName,
 		        'size' => filesize($fileName),

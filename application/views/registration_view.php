@@ -2,7 +2,7 @@
 <article id="main" class="container">
 	<header>
 				<h2>Create your InOneCloud Account</h2>
-				<p>You can registrate here</p>
+				<p>You can create your account here</p>
 			</header>
 			<div class="box">
 				<form method="post" action="/registration/add_user">

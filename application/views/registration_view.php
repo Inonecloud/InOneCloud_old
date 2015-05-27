@@ -2,9 +2,19 @@
 <article id="main" class="container">
 	<header>
 				<h2>Create your InOneCloud Account</h2>
+
+				<h2>Unfortunately, registration is not avalible now</h2>
+
+				<p>If you want to take a part in testing write your email here and we send you login and password</p>
+				<form method="post" action="">
+					<input type+"email" id="email" placeholder="example@example.com">
+					<input type="submit" value="send">
+				</form>
+				<p>Best Regards<br>InOne Team<br></p>
+
 				<p>You can create your account here</p>
 			</header>
-			<div class="box">
+			<!--<div class="box">
 				<form method="post" action="/registration/add_user">
 					<div class="row uniform 50%">
 						<div class="6u 12u(mobilep)">
@@ -32,7 +42,7 @@
 						</div>
 					</div>
 				</form>
-			</div>
+			</div>-->
 </article>
 <!--End Main-->
 

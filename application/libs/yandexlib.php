@@ -58,7 +58,8 @@ class YandexLib
 	{
 		//$fileName = 'My_video_1.avi';
 		$newName = $filename;
-
+		print_r($diskClient);
+		exit;
 		$diskClient->uploadFile(
 		    '/',
 		    array(

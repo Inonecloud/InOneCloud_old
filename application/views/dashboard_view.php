@@ -24,9 +24,10 @@
 		<p>Free Space: <?=round(($diskSpace['availableBytes'] - $diskSpace['usedBytes']) / 1024 / 1024 / 1024, 2)?> Gbytes</p>
 		<p>All Space: <?=round($diskSpace['availableBytes'] / 1024 / 1024 / 1024, 2)?> Gbytes</p>
 		<form method='post' action='dashboard/yandex_upload' enctype='multipart/form-data'>
+			<input type="file" name="filename"  multiple>
 			<input type='submit' value='Upload'>
-		<form action="#">
-			<input type="file" multiple>
+		</form>
+		<form method='post'action='?'>
      		<div id="dropZone">
         		Drag your file here for uploading
       		</div>

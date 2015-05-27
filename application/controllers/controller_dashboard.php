@@ -39,8 +39,8 @@ class Controller_Dashboard extends Controller
 		$yatoken = Session::get('yatoken');
 		$yd = new YandexLib;
 		$diskClient = $yd -> __construct();
-		$fileName = $_FILES['filename']['name'];
-		$yd -> upload_file($diskClient, $fileName);
+		//$fileName = $_FILES['filename']['name'];
+		$yd -> upload_file($diskClient, $_FILES['filename']['name']);
 
 	}
 

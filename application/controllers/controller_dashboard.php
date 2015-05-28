@@ -34,15 +34,6 @@ class Controller_Dashboard extends Controller
 		}
 	}
 
-	function action_yandex_upload()
-	{
-		$yatoken = Session::get('yatoken');
-		$yd = new YandexLib;
-		$diskClient = $yd -> __construct();
-		//$fileName = $_FILES['filename']['name'];
-		$yd -> upload_file($diskClient, $_FILES['filename']['name']);
-
-	}
 
 	function action_yandex_connect()
 	{
@@ -56,6 +47,33 @@ class Controller_Dashboard extends Controller
 		return $yatoken;
 	}
 
+	function action_yandex_crdir()
+	{
+		$yatoken = Session::get('yatoken');
+		$yd = new YandexLib;
+		$diskClient = $yd -> __construct();
+		$path = $_POST['path'];
+		$yd->create_dir($diskClient, $path);
+		header('location: ..');
+	}
+
+	function action_yandex_upload()
+	{
+		$yatoken = Session::get('yatoken');
+		$yd = new YandexLib;
+		$diskClient = $yd -> __construct();
+		$fileName = $_FILES['filename']['name'];
+		//print_r($_FILES);
+		//exit;
+		//print_r($fileName);
+		//print_r($_FILES['userfile']['size']);
+		//print_r($_FILES['userfile']['error']);
+		//exit;
+		$yd -> upload_file($diskClient, $_FILES);
+		
+		//print_r($_FILES['filename']['name']);
+
+	}
 	function action_logout()
 	{
 		Session::destroy();

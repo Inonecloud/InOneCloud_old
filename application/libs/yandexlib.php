@@ -57,15 +57,17 @@ class YandexLib
 	function upload_file($diskClient, $fileName)
 	{
 		//$fileName = 'My_video_1.avi';
-		$newName = $filename;
-		print_r($diskClient);
-		exit;
+		$newName = 'My_file.txt';
+		//echo $newName;
+		print_r($fileName);
+
+		//exit;
 		$diskClient->uploadFile(
-		    '/',
+		    '/Загрузки/',
 		    array(
-		        'path' => $fileName,
-		        'size' => filesize($fileName),
-		        'name' => $newName
+		        'path' => '/Загрузки/',//$fileName,
+		        'size' => $fileName['size'],//filesize($fileName[]),
+		        'name' => $fileName['name']
 		    )
 		);
 	}

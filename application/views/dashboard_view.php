@@ -19,15 +19,25 @@
 
 		<?php if($yatocken != null): ?>
 
-		<!--Upload-->
 		<h3>Yandex Disk</h3>
+		
+
+		
 		<p>All Space: <?=round(($diskSpace['availableBytes'] + $diskSpace['usedBytes']) / 1024 / 1024 / 1024, 2)?> Gbytes</p>
 		<p>Free Space: <?=round(($diskSpace['availableBytes'])/ 1024 / 1024 / 1024, 2)?> Gbytes</p>
+
+		<form method='post' action='dashboard/yandex_download'>
+			<input type="text" name="dwnpath"  placeholder="File name">
+			<input type="submit" value="Download">
+		</form>
+
 		<form method='post' action='dashboard/yandex_crdir'>
 			<input name="path" type="text" placeholder="Directory name">
 			<input type="submit" value="Create Directory">
 		</form>
 
+
+		<!--Upload-->
 		<form method='post' action='dashboard/yandex_upload' enctype='multipart/form-data'>
 			<input type="file" name="filename"  multiple>
 			<input type='submit' value='Upload'>

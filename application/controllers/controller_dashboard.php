@@ -63,17 +63,27 @@ class Controller_Dashboard extends Controller
 		$yd = new YandexLib;
 		$diskClient = $yd -> __construct();
 		$fileName = $_FILES['filename']['name'];
+		print_r(is_uploaded_file ($_FILES['filename']['tmp_name']));
 		//print_r($_FILES);
 		//exit;
 		//print_r($fileName);
 		//print_r($_FILES['userfile']['size']);
 		//print_r($_FILES['userfile']['error']);
 		//exit;
-		$yd -> upload_file($diskClient, $_FILES);
+		$yd -> upload_file($diskClient, $_FILES['filename']);
 		
 		//print_r($_FILES['filename']['name']);
 
 	}
+
+	function action_yandex_download()
+	{
+		$yatoken = Session::get('yatoken');
+		$yd = new YandexLib;
+		$diskClient = $yd -> __construct();
+		$yd -> download_file($diskClient, $_POST['dwnpath']);
+	}
+
 	function action_logout()
 	{
 		Session::destroy();

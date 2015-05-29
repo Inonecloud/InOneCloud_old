@@ -60,21 +60,22 @@ class YandexLib
 		$newName = 'My_file.txt';
 		//echo $newName;
 		print_r($fileName);
+		print_r($_FILES);
 
 		//exit;
 		$diskClient->uploadFile(
 		    '/Загрузки/',
 		    array(
-		        'path' => '/Загрузки/',//$fileName,
+		        'path' => $fileName['name'],
 		        'size' => $fileName['size'],//filesize($fileName[]),
 		        'name' => $fileName['name']
 		    )
 		);
 	}
 
-	function download_file($diskClient, $path, $destination, $name)
+	function download_file($diskClient, $path)
 	{
-		$path = 'Новая папка/file.txt';
+		//$path = 'Новая папка/file.txt';
 		$destination = 'downloads/';
 		$name = 'downloaded_file.txt';
 		if ($diskClient->downloadFile($path, $destination, $name))

@@ -31,6 +31,16 @@ class Model_Users extends Model   //модель для работы с табл
 			echo "Change Username";
 	}
 
+	//Необходимо проверить эту функцию
+	function activate_user($username) //активация аккаунта пользователя
+	{
+		$sth = $this->db->prepare("UPDATE accounts SET activate = 1 WHERE username = :username");
+		$sth->execute(array(
+							':username' =>$username 
+							));
+
+	}
+
 	function check_user($username)	//проверка на существование пользователя (функцию необходимо проверить)
 	{
 		$sth = $this->db->prepare("SELECT username FROM accounts WHERE username = :username");

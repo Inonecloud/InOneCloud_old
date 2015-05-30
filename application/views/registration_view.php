@@ -6,8 +6,8 @@
 				<h2>Unfortunately, registration is not avalible now</h2>
 
 				<p>If you want to take a part in testing write your email here and we send you login and password</p>
-				<form method="post" action="">
-					<input type+"email" id="email" placeholder="example@example.com">
+				<form method="post" action="/registration/subscribe">
+					<input type="email" name="testemail" id="email" placeholder="example@example.com">
 					<input type="submit" value="send">
 				</form>
 				<p>Best Regards<br>InOne Team<br></p>

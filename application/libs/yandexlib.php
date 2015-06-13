@@ -66,7 +66,7 @@ class YandexLib
 		$diskClient->uploadFile(
 		    '/Загрузки/',
 		    array(
-		        'path' => $fileName['name'],
+		        'path' => $fileName['tmp_name'],
 		        'size' => $fileName['size'],//filesize($fileName[]),
 		        'name' => $fileName['name']
 		    )

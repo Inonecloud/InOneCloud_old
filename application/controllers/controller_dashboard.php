@@ -71,7 +71,7 @@ class Controller_Dashboard extends Controller
 		//print_r($_FILES['userfile']['error']);
 		//exit;
 		$yd -> upload_file($diskClient, $_FILES['filename']);
-		
+		header('location: ..');
 		//print_r($_FILES['filename']['name']);
 
 	}

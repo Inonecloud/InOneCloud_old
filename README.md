@@ -1,8 +1,8 @@
 #InOneCloud
 
-This is a client for Cloud Storoges
+This is a client for Cloud Storages
 
 Copyright by Andrew Yelmanov
 
-Developers Team
-Andrew Yelmanov Ivan Zubov, Dmitry Simonov
+Developers Team:
+Andrew Yelmanov, Ivan Zubov, Dmitry Simonov

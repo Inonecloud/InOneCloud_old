@@ -1,8 +1,11 @@
-#InOneCloud
+##InOneCloud
 
 This is a client for Cloud Storages
 
 Copyright by Andrew Yelmanov
 
-Developers Team:
+##Developers
+
 Andrew Yelmanov, Ivan Zubov, Dmitry Simonov
+
+Thanks Mikhail Dzantiev for help

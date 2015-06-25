@@ -14,36 +14,28 @@
 
 				<p>You can create your account here</p>
 			</header>
-			<!--<div class="box">
-				<form method="post" action="/registration/add_user">
-					<div class="row uniform 50%">
-						<div class="6u 12u(mobilep)">
-							<input type="text" name="name" id="name" value="" placeholder="Username" />
-						</div>
-						<div class="6u 12u(mobilep)">
-							<input type="email" name="email" id="email" value="" placeholder="Email" />
-						</div>
-					</div>
-					<div class="row uniform 50%">
-						<div class="12u">
-							<input type="password" name="email" id="email" value="" placeholder="Password" />
-						</div>
-					</div>
-					<div class="row uniform 50%">
-						<div class="12u">
-							<input type="password" name="email" id="email" value="" placeholder="Confirm password" />
-						</div>
-					</div>
-					<div class="row uniform">
-						<div class="12u">
-							<ul class="actions align-center">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
-						</div>
-					</div>
-				</form>
-			</div>-->
 </article>
+
+<!-- <article id="main" class="container">	
+	<header class="aboutcloud">
+		<h2>Create your InOneCloud account</h2>
+		<hr>
+	</header>
+	<article id="registration">
+		<p>You can create your personal account here.</p>	
+		<form id="regist" method="post" action="?">
+			<fieldset id="inputs">
+				<input class ="username" name="username" type="text" placeholder="Username" autofocus required>
+				<input class="email" name="email" type="email" placeholder="Email" required>
+				<input class="password" name="password" type="password" placeholder="Password" required>
+				<input class="password" name="CNFpassword" type="password" placeholder="Repeat password" required>
+			</fieldset>
+			<fieldset id="actions">
+				<input type="checkbox" required><label>I agree with license</label>
+				<input class="submit" type ="submit" name="Registration" value = "Create account">				</fieldset>
+		</form>	
+	</article>	
+</article> -->
 <!--End Main-->
 
 <!--

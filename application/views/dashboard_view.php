@@ -26,32 +26,41 @@
 		<p>All Space: <?=round(($diskSpace['availableBytes'] + $diskSpace['usedBytes']) / 1024 / 1024 / 1024, 2)?> Gbytes</p>
 		<p>Free Space: <?=round(($diskSpace['availableBytes'])/ 1024 / 1024 / 1024, 2)?> Gbytes</p>
 
-		<form method='post' action='dashboard/yandex_download'>
-			<input type="text" name="dwnpath"  placeholder="File name">
-			<input type="submit" value="Download">
-		</form>
+		<!--Controls-->
+		<section class="controls">
+			<div class="download">
+				<form method='post' action='dashboard/yandex_download'>
+					<input type="text" name="dwnpath"  placeholder="Filename">
+					<input type="submit" value="Download">
+				</form>
+			</div>
 
-		<form method='post' action='dashboard/yandex_crdir'>
-			<input name="path" type="text" placeholder="Directory name">
-			<input type="submit" value="Create Directory">
-		</form>
+			<div class="createdir">
+				<form method='post' action='dashboard/yandex_crdir'>
+					<input name="path" type="text" placeholder="Folder name">
+					<input type="submit" value="">
+				</form>
+			</div>
 
-
-		<!--Upload-->
-		<form method='post' action='dashboard/yandex_upload' enctype='multipart/form-data'>
-			<input type="file" name="filename"  multiple>
-			<input type='submit' value='Upload'>
-		</form>
+			<!--Upload-->
+			<div class="uploadfile">
+				<form method='post' action='dashboard/yandex_upload' enctype='multipart/form-data'>
+					<input type="file" name="filename"  multiple>
+					<input type='submit' value='Upload'>
+				</form>
+			</div>
 		
-		<form method='post'action='?'>
-     		<div id="dropZone">
-        		Drag your file here for uploading
-      		</div>
-    	</form>  
-    	<!--End Upload-->
+			<form method='post'action='?'>
+     			<div id="dropZone">
+        			Drag your file here for uploading
+      			</div>
+    		</form> 
+
+    		<!--End Upload-->
+    	</section>
+    	<!--End Controls>
 
 		<!-- Table -->
-		<section class="box">
 			<div class="table-wrapper">
 				<table>
 					<thead>
@@ -83,11 +92,9 @@
 					</tbody>
 				</table>
 			</div>						
-		</section>
 		<?php endif; ?>		
 		</div>
-		</div>
-				
+		</div>	
 		<!--END Table-->
 	</article>
 	<!--End Main-->

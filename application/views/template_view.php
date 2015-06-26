@@ -22,8 +22,8 @@
 
 
 	<!--Top Menu-->
-	<header id="logo" onclick="ChangeText()" >
-		<h1 id = "caption">InOneCloud</h1>
+	<header id="logo">
+		<h1 id = "caption" onclick="ChangeText()">InOneCloud</h1>
 		<nav>
 			<ul class="topmenu">
 				<?php if(Session::get('loggedIn') == true):?>

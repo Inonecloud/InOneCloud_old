@@ -69,6 +69,7 @@ class Route    //маршрутизация по сайту
 		}
 		else
 		{
+			
 			Route::ErrorPage404();	// если контроллер запрашиваемой страницы не найден, то переброс на 404
 		}
 	}
@@ -76,8 +77,8 @@ class Route    //маршрутизация по сайту
 	static function ErrorPage404()
 	{
 		$host = 'http://' . $_SERVER['HTTP_HOST'].'/';
-		header('HTTP/1.1 404 Not Found');
-		header("Status: 404 Not Found");
+		//header('HTTP/1.1 404 Not Found');
+		//header("Status: 404 Not Found");
 		header('Location:'.$host.'404');
 	}
 }

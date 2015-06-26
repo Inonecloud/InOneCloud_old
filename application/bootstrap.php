@@ -14,5 +14,6 @@ require_once 'libs/yandexlib.php';
 //конфигурации
 require 'config/database.php';
 
+
 Route::start();
 ?>

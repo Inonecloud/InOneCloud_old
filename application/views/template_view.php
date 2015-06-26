@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="icon" type="image/ico" href="/img/favicon.ico">
-	<title>InOneCloud</title>
+	<title><?=(isset($this->title)) ? $this->title :'InOneCloud';?></title>
 	<script type="text/javascript">
 		function ChangeText()
 		{
@@ -28,7 +28,7 @@
 			<ul class="topmenu">
 				<?php if(Session::get('loggedIn') == true):?>
 				<li><a href="dashboard">Home</a></li>
-				<li><a href="#">Settings</a></li>
+				<li><a href="settings">Settings</a></li>
 				<li><a href="dashboard/logout">Log out</a></li>
 				<?php else: ?>
 				<li><a href="/">Home</a></li>
@@ -52,7 +52,7 @@
 			<ul class="repeatemenu">
 				<?php if(Session::get('loggedIn') == true):?>
 				<li><a href="dashboard">Home</a></li>
-				<li><a href="#">Settings</a></li>
+				<li><a href="settings">Settings</a></li>
 				<li><a href="dashboard/logout">Log out</a></li>
 				<?php else: ?>
 				<li><a href="/">Home</a></li>

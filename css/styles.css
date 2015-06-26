@@ -173,6 +173,11 @@ input[type="submit"],
   border: 2px solid #3f7cac;
   text-transform: uppercase; }
 
+/*Error*/
+#error h1 {
+  text-align: center;
+  font-size: 3em; }
+
 /*Table*/
 .table-wapper {
   -webkit-overflow-scrolling: touch;

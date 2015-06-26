@@ -1,4 +1,6 @@
 <article id="main" class="container">
-	<h2>404 Not Found</h2>
-	<p>Back to <a href="main">main page</a></p>
+	<section id="error">
+		<h2>404 Not Found</h2>
+		<p>Back to <a href="/">main page</a></p>
+	</section>
 </article>

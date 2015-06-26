@@ -17,6 +17,7 @@ class Controller_Dashboard extends Controller
 
 	function action_index()
 	{
+		$this->view->title = 'Dashboard';
 		$this->view->generate('dashboard_view.php', 'template_view.php');
 		//echo YDconnect::get_code();
 		$yatoken = Session::get('yatoken');

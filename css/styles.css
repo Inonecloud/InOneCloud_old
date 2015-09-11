@@ -87,6 +87,9 @@ input, select {
   vertical-align: middle; }
 
 /*Basic*/
+html {
+  height: 100%; }
+
 body {
   height: 100%;
   min-height: 100%;
@@ -295,6 +298,7 @@ table {
 
 /*Main*/
 #main {
+  box-sizing: border-box;
   margin: 0 2em;
   position: relative;
   padding: 4em 0 2em 0;
@@ -309,8 +313,8 @@ table {
       text-align: justify;
       display: inline-block;
       font-style: normal;
-      margin: 1em 0 0 0;
-      padding: 1em 0 1.25em 0; }
+      margin: 1 0 0 0;
+      padding: 0 0 1.25em 0; }
   #main #registration {
     text-align: center;
     max-width: 50%;
@@ -368,7 +372,9 @@ table {
   background: #3f7cac;
   padding: 2em 0 1em 0;
   color: #fff;
-  line-height: 3; }
+  line-height: 3;
+  height: 3.1em;
+  margin-top: -6.1em; }
   #footer .copyright {
     display: inline-block;
     color: inherit;
@@ -439,6 +445,7 @@ table {
 
   /* Main */
   #main {
+    box-sizing: none;
     padding: 4em 0 0 0; }
     #main > header {
       margin: 0 0 0 0; }
@@ -462,6 +469,7 @@ table {
     width: 100%;
     padding: 2em 0;
     height: 22em;
+    margin-bottom: -22em;
     position: relative; }
     #footer .copyright li {
       border-left: 0;

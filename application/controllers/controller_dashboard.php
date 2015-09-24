@@ -65,12 +65,6 @@ class Controller_Dashboard extends Controller
 		$diskClient = $yd -> __construct();
 		$fileName = $_FILES['filename']['name'];
 		print_r(is_uploaded_file ($_FILES['filename']['tmp_name']));
-		//print_r($_FILES);
-		//exit;
-		//print_r($fileName);
-		//print_r($_FILES['userfile']['size']);
-		//print_r($_FILES['userfile']['error']);
-		//exit;
 		$yd -> upload_file($diskClient, $_FILES['filename']);
 		header('location: ..');
 		//print_r($_FILES['filename']['name']);

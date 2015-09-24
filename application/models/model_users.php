@@ -11,7 +11,7 @@ class Model_Users extends Model   //модель для работы с табл
 	function add_user()
 	{
 		$username = $_POST['username'];
-		$password = Hash::create('sha256', $_POST['password'], 'cats do not fliing');
+		$password = Hash::create('sha256', $_POST['password']);
 		$email = $_POST['email'];
 
 		echo $username, $password, $email;
@@ -41,6 +41,12 @@ class Model_Users extends Model   //модель для работы с табл
 
 	}
 
+	/*
+	* Checking of user's existence
+	* @param string $username
+	*
+	* @return bool
+	*/
 	function check_user($username)	//проверка на существование пользователя (функцию необходимо проверить)
 	{
 		$sth = $this->db->prepare("SELECT username FROM accounts WHERE username = :username");
@@ -57,7 +63,32 @@ class Model_Users extends Model   //модель для работы с табл
 			return true;
 	}
 
-	function find_user() //функция авторизации пользователя
+	/*
+	*  Is useraccount active?
+	* @param string $username
+	*
+	* @return bool 
+	*/
+	function check_activation($username)
+	{
+		$sth = $this->db->prepare("SELECT username, status FROM accounts WHERE username = :username");
+		$sth->execute(array(
+								':username' => $username
+								));
+		if($status == 0)
+			return false;
+		else
+			return true;
+	}
+
+
+	/*--------------------------------------------------
+	*--Данная функция не является праильной для поиска пользователя в настоящий момент
+	*--Необходимо исправить запрос к БД. Получать соль из соответствующего аттрибута и 
+	*--изменить вызываемую функцию из класса Hash
+	*---------------------------------------------------*/
+
+	function find_user() //функция авторизации пользователя 
 	{	
 		/*echo Hash::create('sha256', $_POST['password'], 'cats do not fliing');
 		die();*/

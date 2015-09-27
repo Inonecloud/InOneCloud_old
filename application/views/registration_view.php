@@ -1,5 +1,5 @@
 <!-- Main-->
-<article id="main" class="container">
+<!-- <article id="main" class="container">
 	<header>
 				<h2>Create your InOneCloud Account</h2>
 
@@ -14,9 +14,9 @@
 
 				<p>You can create your account here</p>
 			</header>
-</article>
+</article>-->
 
-<!-- <article id="main" class="container">	
+<article id="main" class="container">	
 	<header class="aboutcloud">
 		<h2>Create your InOneCloud account</h2>
 		<hr>
@@ -35,7 +35,7 @@
 				<input class="submit" type ="submit" name="Registration" value = "Create account">				</fieldset>
 		</form>	
 	</article>	
-</article> -->
+</article> 
 <!--End Main-->
 
 <!--

@@ -63,7 +63,7 @@
 			<ul class="storages">
 				<li><a href="https://drive.google.com">Google Drive</a></li>
 				<li><a href="https://disk.yandex.ru">Yandex Disk</a></li>
-			</ul>
+              		</ul>
 		</nav>
 	</footer>
 	<!--End Footer-->

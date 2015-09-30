@@ -23,7 +23,7 @@
 	</header>
 	<article id="registration">
 		<p>You can create your personal account here.</p>	
-		<form id="regist" method="post" action="?">
+		<form id="regist" method="post" action="registration/add_user">
 			<fieldset id="inputs">
 				<input class ="username" name="username" type="text" placeholder="Username" autofocus required>
 				<input class="email" name="email" type="email" placeholder="Email" required>

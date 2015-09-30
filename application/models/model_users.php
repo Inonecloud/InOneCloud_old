@@ -7,20 +7,32 @@ class Model_Users extends Model   //модель для работы с табл
 		//echo md5('test');
 		print_r($_POST);
 	}
+       
+    function take_salt($username)
+	{
+	    $sth = $this->db->prepare("SELECT salt FROM accounts WHERE username = :username");
+	    $sth->execute(array(
+	                        ':username'=>$username,
+	                        ));
+	    $salt = $sth->fetch();
+	    return $salt;    
+	}
 
 	function add_user()
 	{
 		$username = $_POST['username'];
-		$password = Hash::create('sha256', $_POST['password']);
+		$salt = Hash::salt();
+		$password = Hash::create('sha256', $_POST['password'], $salt);
 		$email = $_POST['email'];
-
+		
 		echo $username, $password, $email;
 		if($this->check_user($username) == true)
 		{
-			$sth = $this->db->prepare("INSERT INTO accounts (username, password, email) VALUES (:username, :password, :email)");
+			$sth = $this->db->prepare("INSERT INTO accounts (username, password, salt, email) VALUES (:username, :password, :salt, :email)");
 			$sth->execute(array(
 								':username'=>$username,
 								':password'=>$password,
+								':salt'=>$salt,
 								':email'=>$email
 								));
 			$data = $sth->fetch();
@@ -38,7 +50,6 @@ class Model_Users extends Model   //модель для работы с табл
 		$sth->execute(array(
 							':username' =>$username 
 							));
-
 	}
 
 	/*
@@ -83,20 +94,20 @@ class Model_Users extends Model   //модель для работы с табл
 
 
 	/*--------------------------------------------------
-	*--Данная функция не является праильной для поиска пользователя в настоящий момент
-	*--Необходимо исправить запрос к БД. Получать соль из соответствующего аттрибута и 
-	*--изменить вызываемую функцию из класса Hash
+
 	*---------------------------------------------------*/
 
 	function find_user() //функция авторизации пользователя 
 	{	
 		/*echo Hash::create('sha256', $_POST['password'], 'cats do not fliing');
 		die();*/
-		//echo "Hello <br/>";
+		
+		$salt = take_salt($_POST['username']);
+
 		$sth = $this->db->prepare("SELECT id, username FROM accounts WHERE username = :username  AND password = :password");
    		$sth->execute(array(
 							':username'=>$_POST['username'], 
-							':password' =>Hash::create('sha256', $_POST['password'], 'cats do not fliing')
+							':password' =>Hash::create('sha256', $_POST['password'], $salt)
    					));
 
     	/*$result = $sth->fetchAll();
@@ -117,6 +128,5 @@ class Model_Users extends Model   //модель для работы с табл
 		{
 			header('location: ../login');
 		}
-		
 	}
 }

@@ -12,7 +12,7 @@ class Model_Users extends Model   //модель для работы с табл
 	{
 	    $sth = $this->db->prepare("SELECT salt FROM accounts WHERE username = :username");
 	    $sth->execute(array(
-	                        ':username'=>$username,
+	                        ':username'=>$username
 	                        ));
 	    $salt = $sth->fetch();
 	    return $salt;    
@@ -49,7 +49,7 @@ class Model_Users extends Model   //модель для работы с табл
 		$sth = $this->db->prepare("UPDATE accounts SET activate = 1 WHERE username = :username");
 		$sth->execute(array(
 							':username' =>$username 
-							));
+						));
 	}
 
 	/*
@@ -63,11 +63,10 @@ class Model_Users extends Model   //модель для работы с табл
 		$sth = $this->db->prepare("SELECT username FROM accounts WHERE username = :username");
 		$sth->execute(array(
 								':username' => $username
-								));
+							));
 		
 		$count = $sth ->rowCount();
-		//echo $count;
-		//exit;
+
 		if($count > 0)
 			return false;
 		else
@@ -85,7 +84,7 @@ class Model_Users extends Model   //модель для работы с табл
 		$sth = $this->db->prepare("SELECT username, status FROM accounts WHERE username = :username");
 		$sth->execute(array(
 								':username' => $username
-								));
+							));
 		if($status == 0)
 			return false;
 		else
@@ -102,7 +101,8 @@ class Model_Users extends Model   //модель для работы с табл
 		/*echo Hash::create('sha256', $_POST['password'], 'cats do not fliing');
 		die();*/
 		
-		$salt = take_salt($_POST['username']);
+		$usn = $_POST['username'];
+		$salt = take_salt($usn);
 
 		$sth = $this->db->prepare("SELECT id, username FROM accounts WHERE username = :username  AND password = :password");
    		$sth->execute(array(

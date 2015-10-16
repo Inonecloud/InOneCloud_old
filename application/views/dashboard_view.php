@@ -77,7 +77,7 @@
 		    				if ($dirItem['resourceType'] === 'dir') 
 		       					 echo '<tr>
 		       							<td><input type="checkbox"></td>
-		       							<td>'. $dirItem['displayName'] .'</td>
+		       							<td><a href="#">'. $dirItem['displayName'] .'</a></td>
 		       							<td>Directory </td>
 		       							<td>'. date('d-m-Y H:i:s', strtotime($dirItem['creationDate'])) . '</td>
 		       							</tr>';

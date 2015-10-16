@@ -102,12 +102,17 @@ class Model_Users extends Model   //модель для работы с табл
 		die();*/
 		
 		$usn = $_POST['username'];
-		$salt = take_salt($usn);
+		$salt = $this -> take_salt($usn);
+		//print_r($salt[0]);
+		//print_r( $_POST['password']);
+		$pass = Hash::create('sha256', $_POST['password'], $salt[0]);
+		print_r($pass);
+		//die();
 
 		$sth = $this->db->prepare("SELECT id, username FROM accounts WHERE username = :username  AND password = :password");
    		$sth->execute(array(
 							':username'=>$_POST['username'], 
-							':password' =>Hash::create('sha256', $_POST['password'], $salt)
+							':password' =>Hash::create('sha256', $_POST['password'], $salt[0])
    					));
 
     	/*$result = $sth->fetchAll();

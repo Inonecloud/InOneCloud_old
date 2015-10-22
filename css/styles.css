@@ -374,6 +374,7 @@ table {
   color: #fff;
   line-height: 3;
   height: 3.1em;
+  position: relative;
   margin-top: -6.1em; }
   #footer .copyright {
     display: inline-block;

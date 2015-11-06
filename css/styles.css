@@ -347,7 +347,9 @@ table {
       padding-left: 0.4em;
       border: 2px solid #efefef;
       border-radius: 5px;
-      min-width: 14.4em; }
+      min-width: 14.4em;
+      -webkit-transition: border-color 0.15s linear;
+      transition: border-color 0.15s linear; }
       #main #registration input[type="text"]:focus,
       #main #registration input[type="password"]:focus,
       #main #registration input[type="email"]:focus,
@@ -356,6 +358,10 @@ table {
         box-shadow: inset 0 0 0 2px #fff;
         border: 2px solid #00acff;
         border-radius: 5px; }
+    #main #registration input[type="password"]:focus:invalid {
+      border-color: #cf5340; }
+    #main #registration input[type="password"]:valid {
+      border-color: #b4d388; }
 
 /*CTA*/
 #cta {
@@ -374,6 +380,7 @@ table {
   color: #fff;
   line-height: 3;
   height: 3.1em;
+  position: relative;
   margin-top: -6.1em; }
   #footer .copyright {
     display: inline-block;

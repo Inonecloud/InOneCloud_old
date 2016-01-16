@@ -8,4 +8,7 @@ Copyright by Andrew Yelmanov
 
 Andrew Yelmanov, Ivan Zubov, Dmitry Simonov
 
-Thanks Mikhail Dzantiev for help
+##Thanks 
+
+Mikhail Dzantiev for consulting
+Julia Khuzina for good motivation :)

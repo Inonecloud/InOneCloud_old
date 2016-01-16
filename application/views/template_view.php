@@ -5,7 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="icon" type="image/ico" href="/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon.png">
 	<title><?=(isset($this->title)) ? $this->title :'InOneCloud';?></title>
+	
 	<script type="text/javascript">
 		function ChangeText()
 		{
@@ -17,10 +19,6 @@
 	</script>
 </head>
 <body>
-
-
-
-
 	<!--Top Menu-->
 	<header id="logo">
 		<h1 id = "caption" onclick="ChangeText()">InOneCloud</h1>
@@ -33,7 +31,7 @@
 				<?php else: ?>
 				<li><a href="/">Home</a></li>
 				<li><a href="about">About</a></li>
-				<li><a href="registration">Registration</a></li>
+				<li><a href="registration">Sign Up</a></li>
 				<?php endif; ?>	
 			</ul>
 		</nav>

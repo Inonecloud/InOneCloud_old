@@ -46,12 +46,12 @@
 
 <script type="text/javascript">
 	function getData(){
-		console.log("Hello");
+		//console.log("Hello");
 		var password = document.getElementById('psw').value;
 		var confpsw = document.getElementById('cpsw').value;
 		/*console.log(password);
 		console.log(confpsw);*/
-		if(password != confpsw) document.getElementById('cpsw').style.borderColor = '#cf5340';
+		if(password != confpsw || confpsw == '' ) document.getElementById('cpsw').style.borderColor = '#cf5340';
 		else document.getElementById('cpsw').style.borderColor = '#b4d388';
 	}
 

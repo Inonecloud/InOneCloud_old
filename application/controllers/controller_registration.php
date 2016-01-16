@@ -9,7 +9,7 @@ class Controller_Registration extends Controller
 		function action_add_user()
 	{
 		//$this->model = find_user();
-		$usersModel = $this->load_model('Users');
+		$usersModel = $this->load_model('users');
 		$usersModel->add_user();
 	}
 

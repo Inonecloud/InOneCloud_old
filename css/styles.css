@@ -254,9 +254,21 @@ table {
 #banner {
   background-attachment: scroll, fixed;
   background-color: #fff;
+  -webkit-background-image: url("../img/cover.jpg");
+  -moz-background-image: url("../img/cover.jpg");
+  -o-background-image: url("../img/cover.jpg");
   background-image: url("../img/cover.jpg");
+  -webkit-background-position: top left, center center;
+  -moz-background-position: top left, center center;
+  -o-background-position: top left, center center;
   background-position: top left, center center;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  -o-background-size: auto;
   background-size: auto;
+  -webkit-background-repeat: round;
+  -moz-background-repeat: round;
+  -o-background-repeat: round;
   background-repeat: round;
   margin-top: 3.45em;
   padding: 12em 0 17em 0;
@@ -349,6 +361,8 @@ table {
       border-radius: 5px;
       min-width: 14.4em;
       -webkit-transition: border-color 0.15s linear;
+      -moz-transition: border-color 0.15s linear;
+      -o-transition: border-color 0.15s linear;
       transition: border-color 0.15s linear; }
       #main #registration input[type="text"]:focus,
       #main #registration input[type="password"]:focus,

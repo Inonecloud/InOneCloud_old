@@ -25,39 +25,37 @@ class YDconnect
 		// Если пользователь нажимает "Разрешить" на странице подтверждения, он приходит обратно к нам
 		// $_Get["code"] будет содержать код для получения токена. Код действителен в течении часа.
 		// Теперь у нас есть разрешение и его код, можем отправлять запрос на токен
-		
-
-	 function postKeys($url,$peremen,$headers) 
-	{
-    	$post_arr=array();
-    	foreach ($peremen as $key=>$value) 
-    	{
-        	$post_arr[]=$key."=".$value;
-        }
-   		$data=implode('&',$post_arr);
+		function postKeys($url,$peremen,$headers)
+		{
+    		$post_arr=array();
+    		foreach ($peremen as $key=>$value)
+    		{
+        		$post_arr[]=$key."=".$value;
+        	}
+   			$data=implode('&',$post_arr);
     
-	    $handle=curl_init();
-	    curl_setopt($handle, CURLOPT_URL, $url);
-	    curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
-	    curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
-	    curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
-	    curl_setopt($handle, CURLOPT_POST, true);
-	    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-	    curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
-	    $response=curl_exec($handle);
-	    $code=curl_getinfo($handle, CURLINFO_HTTP_CODE);
-	    return array("code"=>$code,"response"=>$response);
-    }
+	    	$handle=curl_init();
+	    	curl_setopt($handle, CURLOPT_URL, $url);
+	    	curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+	    	curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+	    	curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+	    	curl_setopt($handle, CURLOPT_POST, true);
+	    	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+	    	curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
+	    	$response=curl_exec($handle);
+	    	$code=curl_getinfo($handle, CURLINFO_HTTP_CODE);
+	    	return array("code"=>$code,"response"=>$response);
+    	}
 
-    $result = postKeys("https://oauth.yandex.ru/token",
-				   			array(
-				        			'grant_type'=> 'authorization_code', // тип авторизации
-				        			'code'=> $_GET["code"], // наш полученный код
-				        			'client_id'=>$client_id,
-				        			'client_secret'=>$client_secret
-				        			),
-				    		array('Content-type: application/x-www-form-urlencoded')
-				    	);
+    	$result = postKeys("https://oauth.yandex.ru/token",
+		  			array(
+			       			'grant_type'=> 'authorization_code', // тип авторизации
+			       			'code'=> $_GET["code"], // наш полученный код
+			       			'client_id'=>$client_id,
+			       			'client_secret'=>$client_secret
+			    	),
+				    array('Content-type: application/x-www-form-urlencoded')
+				    );
 
 		if ($result["code"]==200) 
 		{

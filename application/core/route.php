@@ -1,6 +1,18 @@
 <?php
+/**
+ * Class Route
+ * This class builds rotes in this Application
+ *
+ *@author Andrew Yelmanov
+ *Date: 22.03.2015
+ */
 class Route    //маршрутизация по сайту
 {
+	/**
+	 * This method run rotes in this application. It's use controller_main by default.
+	 * Route saved in array() routes. route[1] keeps controller name and route[2] keeps
+	 * method name(action). Typical route path: /controllername/actionname
+     */
 	static function start()
 	{
 		//контроллер и действие по умолчанию

@@ -73,7 +73,7 @@
 					</thead>
 					<tbody>
 						<?php 
-						foreach ($dirContent as $dirItem) 
+						/*foreach ($dirContent as $dirItem)
 		    				if ($dirItem['resourceType'] === 'dir') 
 		       					 echo '<tr>
 		       							<td><input type="checkbox"></td>
@@ -87,7 +87,7 @@
 		       							<td>' . $dirItem['displayName'] . '</td>
 		       							<td> Size ' . intval($dirItem['contentLength']/1024) . ' KBytes</td>
 		       							<td> '.$dirItem['public_url'] . date('d-m-Y H:i:s', strtotime($dirItem['creationDate'])) .'</td>
-		       							</tr>';    
+		       							</tr>';   */
 		       			?>
 					</tbody>
 				</table>

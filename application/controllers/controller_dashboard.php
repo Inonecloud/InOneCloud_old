@@ -23,6 +23,9 @@ class Controller_Dashboard extends Controller
 		$yatoken = Session::get('yatoken');
 		if($yatoken != null)
 		{
+			$yandex = new Yandex();
+			$yandex->show_content($yatoken);
+
 			$yd = new YandexLib;
 			$diskClient = $yd -> __construct();
 			//$ses = $yd ->show_name($diskClient);
@@ -40,7 +43,8 @@ class Controller_Dashboard extends Controller
 	{
 		$client_id = "d0387d6c503246909145797d469d7248";
 		$client_secret = "576b5cf52f1b4f1bab1eb7eeca1db60f";
-		$yatoken = YDconnect::init($client_id,$client_secret); 
+		$yatoken =Yandex::connect($client_id, $client_secret);
+		//$yatoken = YDconnect::init($client_id,$client_secret);
 		//echo YDconnect::get_code();
 		//echo $tocken;
 		Session::set('yatoken', $yatoken);
@@ -48,7 +52,7 @@ class Controller_Dashboard extends Controller
 		return $yatoken;
 	}
 
-	function action_yandex_crdir()
+/*	function action_yandex_crdir()
 	{
 		$yatoken = Session::get('yatoken');
 		$yd = new YandexLib;
@@ -78,7 +82,7 @@ class Controller_Dashboard extends Controller
 		$diskClient = $yd -> __construct();
 		$yd -> download_file($diskClient, $_POST['dwnpath']);
 	}
-
+*/
 	function action_logout()
 	{
 		Session::destroy();

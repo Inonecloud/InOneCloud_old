@@ -11,8 +11,9 @@ require_once 'core/dbconnect.php';
 require_once 'core/session.php';
 require_once 'core/hash.php';
 //require_once 'phar://yandex-php-library_master.phar/vendor/autoload.php';
-require_once 'libs/yadiskconnect.php';
-require_once 'libs/yandexlib.php';
-
+//require_once 'libs/yadiskconnect.php';
+//require_once 'libs/yandexlib.php';
+require_once 'libs/yandex.php';
+require_once 'libs/cloudapi.php';
 
 Route::start();

@@ -9,8 +9,18 @@ class Controller_Registration extends Controller
 		function action_add_user()
 	{
 		//$this->model = find_user();
-		$usersModel = $this->load_model('users');
-		$usersModel->add_user();
+		$choices = array('en', 'de', 'ru');
+		$email = filter_input(INPUT_POST, 'email', 'FILTER_VALIDATE_EMAIL');
+		if ($email === false){
+			print "Submittet email address is invalid";
+		} else {
+			if (filter_has_var(INPUT_POST, 'agree')) {
+
+
+				$usersModel = $this->load_model('users');
+				$usersModel->add_user();
+			}
+		}
 	}
 
 	function action_subscribe()

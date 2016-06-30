@@ -12,6 +12,31 @@ class YandexLib
 		return $diskClient;
 	}
 
+	/**
+	 * @param $url
+	 * @param $var
+	 * @param $headers
+	 * @return array
+     */
+	private function prepare_request($url, $var, $headers)
+	{
+		$handle = curl_init();
+		curl_setopt($handle, CURLOPT_URL, $url);
+		curl_setopt($handle, CURLOPT_PUT, true);
+		curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+		return array("code"=>$code,"response"=>$response);
+	}
+
+	public function show_content()
+	{
+		$result = prepare_request("webdav.yandex.ru",
+									array(
+
+									),
+									array('Content-type: application/binary'));
+	}
+
 	function show_name($diskClient)
 	{
 		return $login = $diskClient->getLogin();

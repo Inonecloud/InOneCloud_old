@@ -37,7 +37,7 @@
 				</select>
 			</fieldset>
 			<fieldset id="actions">
-				<input type="checkbox" required><label>I agree with license</label>
+				<input type="checkbox" name="agree" value="yes" required><label>I agree with license</label>
 				<input class="submit" type ="submit" name="Registration" value = "Create account">
 			</fieldset>
 		</form>	

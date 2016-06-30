@@ -11,6 +11,10 @@ class Session    //cессии
 		$_SESSION[$key] = $value;
 	}
 
+	/**
+	 * @param $key
+	 * @return mixed
+     */
 	public static function get($key)
 	{
 		if (isset($_SESSION[$key]))

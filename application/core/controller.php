@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Class Controller
+ *
+ * Created by Andrew Yelmanov
+ *
+ * Date: 22.03.2015
+ */
 class Controller	//контроллер по умолчанию
 {
 	public $model;
@@ -14,6 +22,12 @@ class Controller	//контроллер по умолчанию
 		
 	}
 
+	/**
+	 * Loading user model
+	 *
+	 * @param string $name
+	 * @return mixed
+     */
 	public function load_model($name)	//функция загрузки модели
 	{
 		$path = $_SERVER['DOCUMENT_ROOT'].'/application/models/model_'.$name .'.php';	//имя файла model_имямодели.php

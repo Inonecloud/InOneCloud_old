@@ -8,12 +8,25 @@ class Controller_Login extends Controller
 		//$this->view = new View();
 	}
 
-	function action_find_user()
+	/*function action_find_user()
 	{
 		//$this->model = find_user();
 		$usersModel = $this->load_model('users');
-		$usersModel->find_user();
+		$usersModel->find_user(htmlentities($_POST['username']));
 
+	}*/
+
+	/**
+	 * This method login user, if it's account exist
+     */
+	function action_find_user(){
+		$usersModel = $this->load_model('users');
+		if (!($usersModel->check_user(htmlentities($_POST['username'])))) {
+			$usersModel->find_user(htmlentities($_POST['username']));
+		} else {
+			error_log("This user not exist");
+			echo "User not exist";
+		}
 	}
 	function action_index()
 	{

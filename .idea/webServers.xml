@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b9807e1b-fb02-42b2-bce2-a593fcb2b9ad" name="InOneCloudDebug" url="http://inonecloud.me">
+        <fileTransfer mountedRoot="D:\www\InOneCloud" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

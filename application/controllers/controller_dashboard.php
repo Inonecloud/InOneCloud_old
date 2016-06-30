@@ -25,6 +25,7 @@ class Controller_Dashboard extends Controller
 		{
 			$yandex = new Yandex();
 			$yandex->show_content($yatoken);
+			$yandex->get_space_info($yatoken);
 
 			$yd = new YandexLib;
 			$diskClient = $yd -> __construct();
@@ -52,17 +53,19 @@ class Controller_Dashboard extends Controller
 		return $yatoken;
 	}
 
-/*	function action_yandex_crdir()
+	function action_yandex_crdir()
 	{
 		$yatoken = Session::get('yatoken');
-		$yd = new YandexLib;
-		$diskClient = $yd -> __construct();
+		//$yd = new YandexLib;
+		//$diskClient = $yd -> __construct();
 		$path = $_POST['path'];
-		$yd->create_dir($diskClient, $path);
+		//$yd->create_dir($diskClient, $path);
+		$yandex = new Yandex();
+		$yandex->create_dir($yatoken, $path);
 		header('location: ..');
 	}
 
-	function action_yandex_upload()
+/*	function action_yandex_upload()
 	{
 		$yatoken = Session::get('yatoken');
 		$yd = new YandexLib;

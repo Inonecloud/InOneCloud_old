@@ -80,13 +80,15 @@ class Yandex implements cloudapi
     /**
      * Show all files and folders from Yandex disk
      *
+     * @access public
+     *
      * @param string $token
      * @return mixed
      */
     public function show_content($token)
     {
         $headers = array("Authorization: OAuth $token", "Content-Type: application/hal+json; charset=utf-8");
-        $url = 'https://cloud-api.yandex.net:443/v1/disk/resources?path=%2F';
+        $url = 'https://cloud-api.yandex.net:443/v1/disk/resources?path=%2F&limit=100';
 
         $curl_res = $this->curl_get($url, $headers);
         $info = $curl_res['info'];
@@ -134,26 +136,98 @@ class Yandex implements cloudapi
         }
     }
 
-    public function upload_file()
+    /**
+     * Upload file to Yandex Disk
+     *
+     * @access public
+     * @error uploaded null bytes file
+     *
+     * @param $token
+     * @param $path
+     * @return mixed
+     */
+    public function upload_file($token, $path)
     {
         // TODO: Implement upload_file() method.
+        // TODO: Write part for loader via response
+        $headers = array("Authorization: OAuth $token", "Content-Type: application/hal+json; charset=utf-8");
+        $url = 'https://cloud-api.yandex.net:443/v1/disk/resources/upload?path=%2F'.$path['name'];
+
+        $curl_res = $this->curl_get($url, $headers);
+        $info = $curl_res['info'];
+        $response = $curl_res['response'];
+        $code = $curl_res['code'];
+
+        print_r($info);
+        if ($info['http_code'] != '200') {
+            //echo 'Error ' . $info['http_code'];
+            return  $info['http_code'];
+        } else {
+            //echo 'OK';
+            echo "<pre>";
+            $result = json_decode($response, true);
+            $url = $result['href'];
+            $curl_res = $this->curl_put($url, $headers);
+            //print_r($result);
+            $info = $curl_res['info'];
+            $response = $curl_res['response'];
+            $code = $curl_res['code'];
+            print_r($info);
+            if ($info['http_code'] != '201') {
+                echo 'Error ' . $info['http_code'];
+                return  $info['http_code'];
+            } else {
+                $result = json_decode($response, true);
+                return $result;
+            }
+        }
     }
 
-    public function download_file()
+    /**
+     * Download file from Yandex Disk
+     *
+     * @access public
+     *
+     * @param $token
+     * @param $path
+     * @return mixed
+     */
+    public function download_file($token, $path)
     {
         // TODO: Implement download_file() method.
+        $headers = array("Authorization: OAuth $token", "Content-Type: application/hal+json; charset=utf-8");
+        $url = 'https://cloud-api.yandex.net:443/v1/disk/resources/download?path=%2F'.$path;
+
+        $curl_res = $this->curl_get($url, $headers);
+        $info = $curl_res['info'];
+        $response = $curl_res['response'];
+        $code = $curl_res['code'];
+
+        print_r($info);
+        if ($info['http_code'] != '200') {
+            return  $info['http_code'];
+        } else {
+            $result = json_decode($response, true);
+            $url = $result['href'];
+            header('location: '.$url);
+        }
     }
 
-    public function delete_file()
+
+    public function delete_file_dir()
     {
         // TODO: Implement delete_file() method.
     }
 
-    public function delete_dir()
-    {
-        // TODO: Implement delete_dir() method.
-    }
 
+    /**
+     * Get Yandex disk meta data
+     *
+     * @access public
+     *
+     * @param string $token
+     * @return mixed
+     */
     public function get_space_info($token){
         //TODO: Write RESTful code to take space information
         $headers = array("Authorization: OAuth $token", "Content-Type: application/hal+json; charset=utf-8");
@@ -214,6 +288,31 @@ class Yandex implements cloudapi
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        $response = curl_exec($curl);
+        $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+        $info = curl_getinfo($curl);
+        curl_close($curl);
+        return array("response" => $response, "code" => $code, "info" => $info);
+    }
+
+    /**
+     * Settings for cURL POST
+     *
+     * @access private
+     *
+     * @param $url
+     * @param $headers
+     * @return array
+     */
+    private function curl_post($url, $headers){
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($curl, CURLOPT_HEADER, 0);

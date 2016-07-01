@@ -65,27 +65,32 @@ class Controller_Dashboard extends Controller
 		header('location: ..');
 	}
 
-/*	function action_yandex_upload()
+	function action_yandex_upload()
 	{
 		$yatoken = Session::get('yatoken');
-		$yd = new YandexLib;
-		$diskClient = $yd -> __construct();
+		$yandex = new Yandex();
+
+		//$yd = new YandexLib;
+		//$diskClient = $yd -> __construct();
 		$fileName = $_FILES['filename']['name'];
-		print_r(is_uploaded_file ($_FILES['filename']['tmp_name']));
-		$yd -> upload_file($diskClient, $_FILES['filename']);
+		$yandex->upload_file($yatoken, $_FILES['filename']);
+	//	print_r(is_uploaded_file ($_FILES['filename']['tmp_name']));
+		//$yd -> upload_file($diskClient, $_FILES['filename']);
 		header('location: ..');
 		//print_r($_FILES['filename']['name']);
 
 	}
 
-	function action_yandex_download()
+function action_yandex_download()
 	{
 		$yatoken = Session::get('yatoken');
-		$yd = new YandexLib;
-		$diskClient = $yd -> __construct();
-		$yd -> download_file($diskClient, $_POST['dwnpath']);
+		$yandex = new Yandex();
+		$yandex->download_file($yatoken, 'Otvety.pdf');
+		//$yd = new YandexLib;
+		//$diskClient = $yd -> __construct();
+		//$yd -> download_file($diskClient, $_POST['dwnpath']);
 	}
-*/
+
 	function action_logout()
 	{
 		Session::destroy();

@@ -14,6 +14,7 @@ require_once 'core/hash.php';
 //require_once 'libs/yadiskconnect.php';
 //require_once 'libs/yandexlib.php';
 require_once 'libs/yandex.php';
-require_once 'libs/cloudapi.php';
+require_once 'libs/dropbox.php';
+//require_once 'libs/cloudapi.php';
 
 Route::start();

@@ -27,16 +27,20 @@ class Controller_Dashboard extends Controller
 			$yandex->show_content($yatoken);
 			$yandex->get_space_info($yatoken);
 
-			$yd = new YandexLib;
-			$diskClient = $yd -> __construct();
+			//$yd = new YandexLib;
+			//$diskClient = $yd -> __construct();
 			//$ses = $yd ->show_name($diskClient);
-			Session::set('dirContent',$yd ->show_name($diskClient));
+			//Session::set('dirContent',$yd ->show_name($diskClient));
 			//echo $yd -> show_name($diskClient);
-			Session::set('dirContent', $yd ->show_dir($diskClient));
-			Session::set('diskSpace', $yd ->disk_space($diskClient));
+			//Session::set('dirContent', $yd ->show_dir($diskClient));
+			//Session::set('diskSpace', $yd ->disk_space($diskClient));
+
+
 			//exit;
 			//Session::set('dirContent', $yd ->show_dir($diskClient));
 		}
+		$dropbox = new Dropbox();
+		$dropbox->show_content('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
 	}
 
 
@@ -90,6 +94,8 @@ function action_yandex_download()
 		//$diskClient = $yd -> __construct();
 		//$yd -> download_file($diskClient, $_POST['dwnpath']);
 	}
+
+
 
 	function action_logout()
 	{

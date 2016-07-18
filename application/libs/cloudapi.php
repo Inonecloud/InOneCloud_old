@@ -13,6 +13,6 @@ interface cloudapi
     public function create_dir($token, $path);
     public function upload_file($token, $path);
     public function download_file($token, $path);
-    public function delete_file_dir();
+    public function delete_file_dir($token, $path);
 
 }

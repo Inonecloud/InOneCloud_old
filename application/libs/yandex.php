@@ -160,10 +160,8 @@ class Yandex implements cloudapi
 
         print_r($info);
         if ($info['http_code'] != '200') {
-            //echo 'Error ' . $info['http_code'];
             return  $info['http_code'];
         } else {
-            //echo 'OK';
             echo "<pre>";
             $result = json_decode($response, true);
             $url = $result['href'];
@@ -214,9 +212,23 @@ class Yandex implements cloudapi
     }
 
 
-    public function delete_file_dir()
+    public function delete_file_dir($token, $path)
     {
         // TODO: Implement delete_file() method.
+        $headers = array("Authorization: OAuth $token", "Content-Type: application/hal+json; charset=utf-8");
+        $url = 'https://cloud-api.yandex.net:443/v1/disk/resources?path=%2F'.$path;
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        $response = curl_exec($curl);
+        $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+        $info = curl_getinfo($curl);
+        curl_close($curl);
     }
 
 

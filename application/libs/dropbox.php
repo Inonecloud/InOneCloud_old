@@ -30,7 +30,7 @@ class Dropbox implements cloudapi{
     {
         // TODO: Check show_content() method.
         $headers = array("Authorization: Bearer $token", "Content-Type: application/json; charset=utf-8");
-        $param = "{\"path\": \" \",\"recursive\": false,\"include_media_info\": false,\"include_deleted\": false,\"include_has_explicit_shared_members\": false}";
+        $param = "{\"path\": \"\",\"recursive\": false,\"include_media_info\": false,\"include_deleted\": false,\"include_has_explicit_shared_members\": false}";
 
         $url = 'https://api.dropboxapi.com/2/files/list_folder';
         $curl_res = $this->curl_post($url, $headers, $param);
@@ -51,7 +51,6 @@ class Dropbox implements cloudapi{
      * Create new folder in dropbox. Use POST method
      *
      * @access public
-     * @error need to check
      *
      * @param $token
      * @param $path
@@ -59,14 +58,14 @@ class Dropbox implements cloudapi{
      */
     public function create_dir($token, $path)
     {
-        // TODO: Check create_dir() method.
+        // TODO: Solve a problem with path.
 
         //Debug path
-        $path = "";
+        $path = "/folder2";
         //
 
         $headers = array("Authorization: Bearer $token", "Content-Type: application/json; charset=utf-8");
-        $param = "{\"path\": \" $path\"}";
+        $param = "{\"path\": \"$path\"}";
         $url = 'https://api.dropboxapi.com/2/files/create_folder';
         $curl_res = $this->curl_post($url, $headers, $param);
         $info = $curl_res['info'];
@@ -96,7 +95,6 @@ class Dropbox implements cloudapi{
      * Delete folder or file from dropbox. Use POST method
      *
      * @access public
-     * @error need to check
      *
      * @param $token
      * @param $path
@@ -104,10 +102,10 @@ class Dropbox implements cloudapi{
      */
     public function delete_file_dir($token, $path)
     {
-        // TODO: Check delete_file_dir() method.
+        // TODO: Solve problem with path.
 
         $headers = array("Authorization: Bearer $token", "Content-Type: application/json; charset=utf-8");
-        $param = "{\"path\": \"$path\"}}";
+        $param = "{\"path\": \"$path\"}";
         $url = 'https://api.dropboxapi.com/2/files/delete';
 
         $curl_res = $this->curl_post($url, $headers, $param);
@@ -122,6 +120,30 @@ class Dropbox implements cloudapi{
         print_r($response);
         print_r($result);
 
+        return $result;
+    }
+
+    /**
+     * Get space info about dropbox
+     *
+     * @access public
+     *
+     * @param $token
+     * @return mixed
+     */
+    public function get_space_info($token)
+    {
+        // TODO: Implement get_space_info() method.
+        $headers = array("Authorization: Bearer $token", "Content-Type: application/json; charset=utf-8");
+        $url = 'https://api.dropboxapi.com/2/users/get_space_usage';
+        $curl_res = $this->curl_post($url, $headers, "null");
+        $info = $curl_res['info'];
+        $response = $curl_res['response'];
+        $code = $curl_res['code'];
+        echo '<pre>';
+        $result = json_decode($response, true);
+        print_r($response);
+        print_r($result);
         return $result;
     }
 

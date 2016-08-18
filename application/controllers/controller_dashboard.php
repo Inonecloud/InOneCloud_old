@@ -24,7 +24,7 @@ class Controller_Dashboard extends Controller
 		if($yatoken != null)
 		{
 			$yandex = new Yandex();
-			$yandex->show_content($yatoken);
+			//$yandex->show_content($yatoken);
 			$yandex->get_space_info($yatoken);
 
 			//$yd = new YandexLib;
@@ -41,6 +41,7 @@ class Controller_Dashboard extends Controller
 		}
 		$dropbox = new Dropbox();
 		$dropbox->show_content('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
+		$dropbox->get_space_info('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
 	}
 
 
@@ -64,8 +65,11 @@ class Controller_Dashboard extends Controller
 		//$diskClient = $yd -> __construct();
 		$path = $_POST['path'];
 		//$yd->create_dir($diskClient, $path);
-		$yandex = new Yandex();
-		$yandex->create_dir($yatoken, $path);
+		//$yandex = new Yandex();
+		//$yandex->create_dir($yatoken, $path);
+		$dropbox = new Dropbox();
+		$dropbox->delete_file_dir('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0', $path);
+		//$dropbox->create_dir('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0', $path);
 		header('location: ..');
 	}
 

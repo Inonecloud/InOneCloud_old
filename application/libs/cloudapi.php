@@ -14,5 +14,6 @@ interface cloudapi
     public function upload_file($token, $path);
     public function download_file($token, $path);
     public function delete_file_dir($token, $path);
+    public function get_space_info($token);
 
 }

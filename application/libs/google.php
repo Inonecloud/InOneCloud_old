@@ -74,7 +74,7 @@ class Google implements cloudapi
         $url = "https://www.googleapis.com/drive/v3/files" . "?" . http_build_query($query);
         curl_setopt($curl, CURLOPT_URL, $url);
         $result = curl_exec($curl);
-        return result;
+        return $result;
     }
 
     public function create_dir($token, $path)

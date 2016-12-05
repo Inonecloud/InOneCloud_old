@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2975123467">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="MySQL - inonecloud@localhost" uuid="bfd19b4f-0ce2-4044-964a-bfcc3217b19c">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

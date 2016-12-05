@@ -39,17 +39,27 @@ class Controller_Dashboard extends Controller
 			//exit;
 			//Session::set('dirContent', $yd ->show_dir($diskClient));
 		}
+
+		//Dropbox debug
+        /*
 		$dropbox = new Dropbox();
 		$dropbox->show_content('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
 		$dropbox->get_space_info('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
-	}
+	    */
+
+        // Google debug
+
+        $google = new Google();
+        $google->show_content($yatoken);
+    }
 
 
 	function action_yandex_connect()
 	{
 		$client_id = "d0387d6c503246909145797d469d7248";
 		$client_secret = "576b5cf52f1b4f1bab1eb7eeca1db60f";
-		$yatoken =Yandex::connect($client_id, $client_secret);
+		//$yatoken =Yandex::connect($client_id, $client_secret);
+		$yatoken = Google::connect("135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com", "g6UZFhKVCZXz2Y7gZTVreRD5");
 		//$yatoken = YDconnect::init($client_id,$client_secret);
 		//echo YDconnect::get_code();
 		//echo $tocken;

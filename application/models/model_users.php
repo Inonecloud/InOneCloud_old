@@ -39,7 +39,7 @@ class Model_Users extends Model{   //модель для работы с таб�
 	/**
 	 * Add a new user in database
      */
-	function add_user()
+	public function add_user()
 	{
 		$username = htmlentities($_POST['username']);
 		$salt = Hash::salt();

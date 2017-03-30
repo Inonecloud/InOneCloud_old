@@ -12,53 +12,25 @@ class Google implements cloudapi
     public static function connect($client_id, $client_secret)
     {
         // TODO: Implement connect() method.
+
+        //redirect uri = http://inonecloud.me/dashboard/action_name
+
+
         // Не работает нефига
-        $client_id = "135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com";
+         $client_id = "135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com";
         $client_secret = "g6UZFhKVCZXz2Y7gZTVreRD5";
         $scope = "&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.appdata+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.scripts";
-        $redirect_uri = "&redirect_uri=http://inonecloud.me/dashboard";
+        $redirect_uri = "&redirect_uri=http://inonecloud.me/dashboard/yandex_connect";
         $response_type = "&response_type=code";
 
-        echo "Hello";
-        echo $_GET;
         if (!isset($_GET["code"])) {
             Header("Location: https://accounts.google.com/o/oauth2/v2/auth?client_id=" . $client_id . $scope . $response_type . $redirect_uri);
-      //      die();
+            die();
         }
-        //$url = "https://accounts.google.com/o/oauth2/v2/auth?client_id=".$client_id.$scope.$response_type.$redirect_uri;
-
-        //Code getting uri
-        //https://accounts.google.com/o/oauth2/v2/auth
-        //?redirect_uri=https%3A%2F%2Fdevelopers.google.com%2Foauthplayground
-        //&prompt=consent
-        //&response_type=code
-        //&client_id=407408718192.apps.googleusercontent.com
-        //&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.appdata+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.scripts
-        //&access_type=offline
-        //https://accounts.google.com/o/oauth2/v2/auth?client_id=135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com&response_type=code&scope=https://www.googleapis.com/auth/drive&redirect_uri=http://inonecloud.me/dashboard
-
+        $url = "https://accounts.google.com/o/oauth2/v2/auth?client_id=".$client_id.$scope.$response_type.$redirect_uri;
 
         //code to token exchange uri
 
-        //POST /oauth2/v4/token HTTP/1.1
-        //Host: www.googleapis.com
-        //Content-Type: application/x-www-form-urlencoded
-
-        //https://www.googleapis.com/oauth2/v4/token?
-        //code=$code;
-        //&client_id=135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com
-        //&client_secret=g6UZFhKVCZXz2Y7gZTVreRD5
-        //&redirect_uri=http://inonecloud.me/dashboard
-        //&grant_type=authorization_code
-
-        /*
-             "access_token": "ya29.Ci-CAyaYtQ-2c9ANxagLnNbN1hQhu7h7-36tsaQBuGMElVaG7Ys-vxo4zW1AtKiWwA",
-              "token_type": "Bearer",
-              "expires_in": 3600,
-              "refresh_token": "1/tmxSzdI_0gOL8yTKTWRHpP3FQTfTZqVZajyBr05gZCI"
-         */
-        //$_GET['code'] = '4/uFxju4g2Uh1iL3-WGj8hHmFCaflSCMEbfwuysUmYIBk';
-        print_r($_GET);
         function postKeys($url,$peremen,$headers)
         {
             $post_arr=array();
@@ -87,7 +59,7 @@ class Google implements cloudapi
                 'code'=> $_GET["code"], // наш полученный код
                 'client_id'=>$client_id,
                 'client_secret'=>$client_secret,
-                'redirect_uri'=>'http://inonecloud.me/dashboard'
+                'redirect_uri'=>'http://inonecloud.me/dashboard/yandex_connect'
             ),
             array('Content-type: application/x-www-form-urlencoded')
         );
@@ -106,11 +78,59 @@ class Google implements cloudapi
        // }
     }
 
+    public function get_authorization_code(){
+        $client_id = "135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com";
+        $client_secret = "g6UZFhKVCZXz2Y7gZTVreRD5";
+        $scope = "https://www.googleapis.com/auth/drive"." https://www.googleapis.com/auth/drive.appdata"." https://www.googleapis.com/auth/drive.file"." https://www.googleapis.com/auth/drive.metadata"." https://www.googleapis.com/auth/drive.scripts";
+        $redirect_uri = "http://inonecloud.me/dashboard/yandex_connect";
+        $response_type = "code";
+        $params = array(
+            'response_type' => 'code',
+            'client_id' => $client_id,
+            'scope' => $scope,
+            'redirect_uri' => $redirect_uri,
+           // 'access_type' =>'offline',
+
+        );
+        $url = 'https://accounts.google.com/o/oauth2/v2/auth?' . http_build_query($params);
+        $_SESSION['state'] = $params['state'];
+        header("Location: $url");
+        exit;
+    }
+
+    public function get_access_tocken(){
+        $params = array(
+            'code' => $_GET['code'],
+            'client_id' => '135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com',
+            'client_secret' => 'g6UZFhKVCZXz2Y7gZTVreRD5',
+            'redirect_uri' =>'http://inonecloud.me/dashboard/yandex_connect',
+            'grant_type' => 'authorization_code',
+        );
+
+        $url = "https://www.googleapis.com/oauth2/v4/token". http_build_query($params);
+
+        $context = stream_context_create(
+            array('http' =>
+                array('method' => 'POST',
+                )
+            )
+        );
+
+        $response = file_get_contents($url, false, $context);
+	// Декодирование в "родной" объект PHP
+	    $token = json_decode($response);
+
+	    print_r($token);
+        $_SESSION['access_token'] = $token->access_token; // Защитить!
+        $_SESSION['expires_in'] = $token->expires_in; // относительное время
+        // (в секундах)
+        $_SESSION['expires_at'] = time() + $_SESSION['expires_in']; // абсолютное
+        return true;
+    }
+
     public function show_content($token)
     {
         // TODO: Implement show_content() method.
-        // $header =  ;
-        // $url = https://www.googleapis.com/drive/v3/files;
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -120,13 +140,12 @@ class Google implements cloudapi
             "spaces" => "drive",
             "access_token" => $token
         );
-        $url = "https://www.googleapis.com/drive/v3/files" . "?" . http_build_query($query);
-        curl_setopt($curl, CURLOPT_URL, $url);
+
+        $uri = "https://www.googleapis.com/drive/v3/files" . "?" . http_build_query($query);
+
+        curl_setopt($curl, CURLOPT_URL, $uri);
         $result = curl_exec($curl);
-        echo "GOOGLE";
-        echo $token;
-        print_r($result);
-       // return $result;
+        echo $result;
     }
 
     public function create_dir($token, $path)
@@ -142,6 +161,7 @@ class Google implements cloudapi
     public function download_file($token, $path)
     {
         // TODO: Implement download_file() method.
+        $uri = "https://www.googleapis.com/drive/v3/files/fileId";
     }
 
     public function delete_file_dir($token, $path)
@@ -149,13 +169,15 @@ class Google implements cloudapi
         // TODO: Implement delete_file_dir() method.
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        //$query = array(
-         //   "access_token" => "ya29.CjCFA3VQFzBccNASDCkecX9Fia1AwWT6YLueqjWApKo1TQu0hwSk56oSxUveKLeQsC4"
-        //);
-        $url = "https://www.googleapis.com/drive/v3/files/?" . $token;
-        curl_setopt($curl, CURLOPT_URL, $url);
+        $query = array(
+            "access_token" => $token
+        );
+        curl_setopt($curl, CURLOPT_URL,
+            "https://www.googleapis.com/drive/v3/files/" . "?" . http_build_query($query)
+        );
         $result = curl_exec($curl);
         echo $result;
+
     }
 
     public function get_space_info($token)

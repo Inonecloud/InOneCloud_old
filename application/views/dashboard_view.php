@@ -11,7 +11,7 @@
 			<hr>
 		<?php if($yatocken == null): ?>
 			<p>Here you can connect to Yandex Disk, Google Drive</p>
-			<a href="dashboard/yandex_connect">Connect to Yandex Disk</a>	
+			<a href="dashboard/yandex_connect">Connect to Yandex Disk</a>
 		<?php else: ?>
 			<?=$yatocken?>
 		<?php endif; ?>			

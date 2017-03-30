@@ -8,13 +8,60 @@
  */
 //include('cloudapi.php');
 
-class Dropbox implements cloudapi{
+class Dropbox implements cloudapi
+{
 
     public static function connect($client_id, $client_secret)
     {
         // TODO: Implement connect() method.
         $token = "Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0";
-        return $token;
+
+        if (!isset($_GET["code"])) {
+            Header("Location: https://www.dropbox.com/oauth2/authorize" . $client_id);
+            die();
+        }
+
+        function postKeys($url, $peremen, $headers)
+        {
+            $post_arr = array();
+            foreach ($peremen as $key => $value) {
+                $post_arr[] = $key . "=" . $value;
+            }
+            $data = implode('&', $post_arr);
+
+            $handle = curl_init();
+            curl_setopt($handle, CURLOPT_URL, $url);
+            curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($handle, CURLOPT_POST, true);
+            curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
+            $response = curl_exec($handle);
+            $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+            return array("code" => $code, "response" => $response);
+        }
+
+        $result = postKeys("https://oauth.yandex.ru/token",
+            array(
+                'grant_type' => 'authorization_code', // тип авторизации
+                'code' => $_GET["code"], // наш полученный код
+                'client_id' => $client_id,
+                'client_secret' => $client_secret
+            ),
+            array('Content-type: application/x-www-form-urlencoded')
+        );
+
+        if ($result["code"] == 200) {
+            $result["response"] = json_decode($result["response"], true);
+            $token = $result["response"]["access_token"];
+            //echo "Your token" .$token ."<br/>";
+            return $token;
+        } else {
+            //echo "Какая-то фигня! Код: ".$result["code"];
+            return $result["code"];
+        }
+
     }
 
     /**
@@ -156,12 +203,13 @@ class Dropbox implements cloudapi{
      * @param $headers
      * @return array
      */
-    private function curl_post($url, $headers, $param){
+    private function curl_post($url, $headers, $param)
+    {
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl , CURLOPT_POSTFIELDS, $param);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $param);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         $response = curl_exec($curl);
@@ -181,7 +229,8 @@ class Dropbox implements cloudapi{
      * @param $headers
      * @return array
      */
-    private function curl_get($url, $headers){
+    private function curl_get($url, $headers)
+    {
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

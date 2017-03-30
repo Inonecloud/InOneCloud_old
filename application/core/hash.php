@@ -31,9 +31,9 @@ class Hash{
      * @return string
      */
     public static function salt(){
-    	for($i = 0; $i<20; $i++)
-    	{
-            $salt = '';
+        $salt = '';
+        for($i = 0; $i<20; $i++)
+        {
             $salt .=chr(rand(48,122));
     	}
         /** @var string $salt */

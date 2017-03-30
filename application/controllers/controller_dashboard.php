@@ -16,57 +16,94 @@ class Controller_Dashboard extends Controller
 	}
 
 	function action_index()
-	{
-		$this->view->title = 'Dashboard';
-		$this->view->generate('dashboard_view.php', 'template_view.php');
-		//echo YDconnect::get_code();
-		$yatoken = Session::get('yatoken');
-		if($yatoken != null)
-		{
-			$yandex = new Yandex();
-			//$yandex->show_content($yatoken);
-			$yandex->get_space_info($yatoken);
+    {
+        $this->view->title = 'Dashboard';
+        $this->view->generate('dashboard_view.php', 'template_view.php');
+        //echo YDconnect::get_code();
+        $yatoken = Session::get('yatoken');
+        $gtoken = Session::get('gtoken');
+        $dtoken = Session::get('gtocken');
+        if ($yatoken != null) {
+            $yandex = new Yandex();
+            $yandex->show_content($yatoken);
+            $yandex->get_space_info($yatoken);
 
-			//$yd = new YandexLib;
-			//$diskClient = $yd -> __construct();
-			//$ses = $yd ->show_name($diskClient);
-			//Session::set('dirContent',$yd ->show_name($diskClient));
-			//echo $yd -> show_name($diskClient);
-			//Session::set('dirContent', $yd ->show_dir($diskClient));
-			//Session::set('diskSpace', $yd ->disk_space($diskClient));
+            //$yd = new YandexLib;
+            //$diskClient = $yd -> __construct();
+            //$ses = $yd ->show_name($diskClient);
+            //Session::set('dirContent',$yd ->show_name($diskClient));
+            //echo $yd -> show_name($diskClient);
+            //Session::set('dirContent', $yd ->show_dir($diskClient));
+            //Session::set('diskSpace', $yd ->disk_space($diskClient));
 
 
-			//exit;
-			//Session::set('dirContent', $yd ->show_dir($diskClient));
-		}
+            //exit;
+            //Session::set('dirContent', $yd ->show_dir($diskClient));
+        }
 
-		//Dropbox debug
-        /*
-		$dropbox = new Dropbox();
-		$dropbox->show_content('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
-		$dropbox->get_space_info('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
-	    */
+        if ($dtoken != null) {
+            //Dropbox debug
 
-        // Google debug
+            $dropbox = new Dropbox();
+            $dropbox->show_content('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
+            $dropbox->get_space_info('Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
 
-        $google = new Google();
-        $google->show_content($yatoken);
+        }
+
+        if ($gtoken != null) {
+            // Google debug
+
+             $google = new Google();
+             $google->show_content($gtoken);
+        }
     }
 
+    public function action_yandex_connect():string{
+        $client_id = "d0387d6c503246909145797d469d7248";
+        $client_secret = "576b5cf52f1b4f1bab1eb7eeca1db60f";
+        try{
+            $yatoken =Yandex::connect($client_id, $client_secret);
+            Session::set('yatoken', $yatoken);
+            header('location: ..');
+        } catch(Exception $e){
+            error_log("Can't connect to Yandex Disk");
+        }
+        return $yatoken;
+    }
 
-	function action_yandex_connect()
-	{
-		$client_id = "d0387d6c503246909145797d469d7248";
-		$client_secret = "576b5cf52f1b4f1bab1eb7eeca1db60f";
-		//$yatoken =Yandex::connect($client_id, $client_secret);
-		$yatoken = Google::connect("135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com", "g6UZFhKVCZXz2Y7gZTVreRD5");
-		//$yatoken = YDconnect::init($client_id,$client_secret);
-		//echo YDconnect::get_code();
-		//echo $tocken;
-		Session::set('yatoken', $yatoken);
-		header('location: ..');
-		return $yatoken;
-	}
+    /**
+     * This function connect to Google Drive
+     *
+     * @return string
+     */
+
+    public function action_google_connect():string {
+        $client_id = "135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com";
+        $client_secret = "g6UZFhKVCZXz2Y7gZTVreRD5";
+        try{
+            $gtoken = Google::connect($client_id, $client_secret);
+            Session::set('gtocken', $gtoken);
+        }  catch (Exception $e){
+            error_log("Can't connect to Google Drive");
+        }
+        return $gtoken;
+    }
+    /**
+     * This function connect to Dropbox
+     *
+     * @return string
+     */
+    public function action_dropbox_connect():string {
+        $client_id = "135842521742-l0793cjhtc3k2sh5gng2q34r3i8iv13h.apps.googleusercontent.com";
+        $client_secret = "g6UZFhKVCZXz2Y7gZTVreRD5";
+        try{
+            $dtoken = Dropbox::connect($client_id, $client_secret);
+            Session::set('dtocken', 'Q1k4cCEvitwAAAAAAAAH2IFMjFpk0b5gtN9RcJMyk9xeB00apxwmGQGSyqvitto0');
+        }  catch (Exception $e){
+            error_log("Can't connect to Google Drive");
+        }
+        return $dtoken;
+    }
 
 	function action_yandex_crdir()
 	{
@@ -118,4 +155,3 @@ function action_yandex_download()
 		exit;
 	}
 }
-?>
